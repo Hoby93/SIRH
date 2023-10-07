@@ -1,0 +1,90 @@
+.dropdown {
+    display: inline-block;
+    margin-top: -2%;
+}
+
+.dropdown-content {
+    display: none;
+    margin-top: -150%;
+    position: absolute;
+    margin-left: 180%;
+    text-align: center;
+    padding: 10%;
+}
+
+.dropdown-content a {
+    font-size: 1.4em;
+    width: 45px;
+    display: block;
+    padding: 5%;
+    padding-top: 10%;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.b-0 {
+    border: none;
+}
+
+.text-container {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.moving-text {
+    position: absolute;
+    animation: moveText 7s linear infinite;
+}
+
+@keyframes moveText {
+    0% {
+        left: 0;
+    }
+    25% {
+        left: 20%;
+    }
+    50% {
+        left: 20%;
+    }
+    75% {
+        right: 0%;
+    }
+    100% {
+        right: 20%;
+    }
+}
+
+/* Add a CSS class for animation */
+.fade-in {
+    animation: fadeIn 3s ease-in-out forwards; /* Add a fade-in animation */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/*  */
+
+.scroll-container {
+    overflow-y: scroll;
+}
+
+/* Hide vertical scrollbar */
+.scroll-container::-webkit-scrollbar {
+    width: 0.5em;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:vertical {
+    background-color: transparent;
+}
+
+.scroll-container::-webkit-scrollbar-track:vertical {
+    background-color: transparent;
+}

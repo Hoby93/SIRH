@@ -1,0 +1,207 @@
+﻿@page
+@{
+    Object[] postes = (Object[]) ViewBag.Postes;
+    Object[] services = (Object[]) ViewBag.Services;
+}
+
+@ViewBag.Message
+
+<div class="row grid-margin stretch-card"  id="primary">
+    <div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Liste des postes</h4>
+        <div class="mb-3 mt-5">
+            <button class="btn btn-dark" onclick="javascript:display('ajout')">
+                <i class="ti-plus btn-icon-prepend"></i>
+                <span class="ml-1">Ajouter</span>
+            </button>
+        </div>
+        <div class="">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>IdService</th>
+                <th>Libelle</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (Poste poste in postes) {
+            <tr>
+                <td>@poste.Id</td>
+                <td>@poste.Idservice</td>
+                <td>@poste.Libelle</td>
+                <td>
+                    <div class="col-md-2 dropdown">
+                        <button class="btn btn-link text-secondary mb-0">
+                            <i class="fas fa-ellipsis-v "></i>
+                        </button>
+                        <div class="dropdown-content border-radius-md shadow">
+                            <a href="#">
+                                <i class="mdi mdi-information-outline"></i> 
+                            </a>
+                            
+                            <a href="#" onclick="javascript:modifier_poste(@poste.Id, @poste.Idservice, '@poste.Libelle', '@poste.Description')">
+                                <i class="mdi mdi mdi-pen"></i>
+                            </a>
+                            <a href="#" onclick="javascript:delete_poste(@poste.Id)">
+                                <i class="mdi mdi-close"></i>
+                            </a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            }
+            </tbody>
+        </table>
+        </div>
+    </div>
+    </div>
+</div>
+
+@* style="display: block *@
+
+<!-- Ajout Poste -->
+<div class="modal" id="ajout" style="margin-top: -8%; height: 120%;">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content card shadow-lg b-10">
+        
+            <!-- Modal Header -->
+            <div class="modal-header b-0">
+                <h4 class="modal-title">Ajout Poste</h4>
+                <button class="btn p-0" onclick="javascript:hidde('ajout')">
+                    <i class="mdi mdi-close"></i>
+                </button>
+            </div>
+            
+            <form method="post" asp-controller="Home" asp-action="InsertPost">
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="">Selection services</label>
+                    <select name="idService" class="form-control">
+                        <option value="">Aucun</option>
+                        @foreach (BddTitre service in services)
+                        {
+                        <option value="@service.Id">@service.Libelle</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="">Libelle</label>
+                    <input type="text" class="form-control" name="libelle">
+                </div>
+                <div class="form-group">
+                    <label for="">Description</label>
+                    <textarea class="form-control" name="description" rows="4" cols="50"></textarea>
+                </div>
+            </div>
+            
+            <!-- Modal Footer -->
+            <div class="modal-footer b-0">
+                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i>&nbsp;&nbsp;Valider</button>
+            </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<!--  -->
+
+<!-- Modifier Poste -->
+<div class="modal" id="modification" style="margin-top: -8%; height: 120%;">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content card shadow-lg b-10">
+        
+            <!-- Modal Header -->
+            <div class="modal-header b-0">
+                <h4 class="modal-title">Modification Poste</h4>
+                <button class="btn p-0" onclick="javascript:hidde('modification')">
+                    <i class="mdi mdi-close"></i>
+                </button>
+            </div>
+            
+            <form method="post" asp-controller="Home" asp-action="UpdatePost">
+                <input type="hidden" id="set-id" class="form-control" name="id">
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="">Selection services</label>
+                    <select id="set-idservice" name="idService" class="form-control">
+                        <option value="">Aucun</option>
+                        @foreach (BddTitre service in services)
+                        {
+                        <option id="set-service-@service.Id" value="@service.Id">@service.Libelle</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="">Libelle</label>
+                    <input type="text" id="set-libelle" class="form-control" name="libelle">
+                </div>
+                <div class="form-group">
+                    <label for="">Description</label>
+                    <textarea id="set-description" class="form-control" name="description" rows="4" cols="50"></textarea>
+                </div>
+            </div>
+            
+            <!-- Modal Footer -->
+            <div class="modal-footer b-0">
+                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i>&nbsp;&nbsp;Valider</button>
+            </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<!--  -->
+
+<!-- Modal-Suppression -->
+<div class="modal " id="supression" style="margin-top: -10%;">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content card shadow-lg b-0">
+        
+            <!-- Modal Header -->
+            <div class="modal-header b-0">
+                <h4 class="modal-title">Message confirmation</h4>
+                <button class="btn" onclick="javascript:hidde('supression')">
+                    <i class="mdi mdi-close"></i>
+                </button>
+            </div>
+            
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <p>La suppression de certaines elements peuvent etre irreversible, voulez vous conctinuer ?</p>
+            </div>
+            
+            <!-- Modal Footer -->
+            <div class="modal-footer b-0">
+              <form method="post" asp-controller="Home" asp-action="deletePost">
+                <input type="hidden" id="id-delete" name="idposte">
+                <button type="button" class="btn btn-danger" onclick="javascript:hidde('supression')"><i class="fas fa-times"></i>&nbsp;&nbsp;Annuler</button>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i>&nbsp;&nbsp;Confirmer</button>
+              </form>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!--  -->
+
+<script>
+    function modifier_poste(id, idService, libelle, desc) {
+        document.getElementById("set-id").value = id;
+        document.getElementById("set-service-" + idService).selected = true;
+        document.getElementById("set-libelle").value = libelle;
+        document.getElementById("set-description").value = desc;
+        display('modification');
+    }
+
+    function delete_poste(id) {
+        document.getElementById("id-delete").value = id;
+        display('supression');
+    }
+</script>
+
+<script src="~/js/modal.js"></script>

@@ -1,0 +1,124 @@
+@page
+@{
+    Object[] postes = (Object[]) ViewBag.POstes;
+    Object[] types = (Object[]) ViewBag.Types;
+    Object[] criteres = (Object[]) ViewBag.Criteres;
+}
+
+@* @ViewBag.Message *@
+
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body col-md-6">
+            <h4 class="card-title">Ajout besoin</h4>
+            <form method="post" asp-controller="Besoin" asp-action="InsertTest">
+
+                <div class="form-group">
+                    <label>Poste</label>
+                    <select name="idposte" class="form-control">
+                        <option value="">Choisissez</option>
+                        @foreach (Poste poste in postes)
+                        {
+                        <option value="@poste.Id">@poste.Libelle</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Type de contrat</label>
+                    <select name="idtype" class="form-control">
+                        <option value="">Choisissez</option>
+                        @foreach (BddTitre type in types)
+                        {
+                        <option value="@type.Id">@type.Libelle</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="set-description" class="form-control" name="description" rows="4" cols="50"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Volume horaire</label>
+                    <input name="vh" type="number" class="form-control" required>
+                </div>
+
+                @foreach (Critere critere in criteres)
+                {
+                <div class="form-group">
+                    <div class="row ml-2">
+                        <div class="col-md-6 form-check" style="margin: 0%;">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input" id="inp-checkbox-@critere.Id" onchange="activate(@critere.Id)">
+                                @critere.Libelle
+                            </label>
+                        </div>
+                        <div class="col-md-6" style="text-align: right;">
+                            <a type="button" class="text-primary" onclick="javascript:setNotes(@critere.Id)"><i class="fas fa-cogs "></i></a>
+                            @* <button type="button" class="btn-outline-twitter"><i class="ti-twitter-alt"></i></button> *@
+                        </div>
+                    </div>
+                    <input type="hidden" value="@critere.Id" name="idcriteres[]" id="inp1-text-@critere.Id" disabled>
+                    <input type="hidden" value="0" name="isset[]" id="inp2-text-@critere.Id" disabled>
+                    <input type="number" name="coefficients[]" class="form-control" placeholder="Coefficient" id="inp-text-@critere.Id" disabled>
+                    
+                    <div id="div-@critere.Id" class="d-none col-md-6">
+                        @foreach (BddTitre option in critere.Options())
+                        {
+                            <label style="font-size: 0.8em;margin-top: 5%;">@option.Libelle</label>
+                            <div id="the-basics" style="margin-top: -6%">
+                                <div class="input-group">
+                                    <input type="number" name="notes[]" value="10" class="form-control" min="0" max="20">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">/20</span>
+                                    </div>
+                                </div>
+                            </div>  
+                        }
+                    </div>
+                </div>
+                }
+                <button type="submit" class="btn btn-primary">Valider</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+
+function setNotes(id) {
+    const c_input = document.getElementById("inp2-text-"+id);
+    const c_div = document.getElementById("div-"+id);
+    const c_checkbox = document.getElementById("inp-checkbox-"+id);
+
+    if(c_checkbox.checked) {
+        if(c_input.value == 1) {
+            c_div.classList.add("d-none");
+            c_input.value = 0;
+        } else {
+            c_div.classList.remove("d-none");
+            c_input.value = 1;
+        }
+    }
+}
+
+function activate(id) {
+    const c_checkbox = document.getElementById("inp-checkbox-"+id);
+    const c_input = document.getElementById("inp-text-"+id);
+    const c_input1 = document.getElementById("inp1-text-"+id);
+    const c_input2 = document.getElementById("inp2-text-"+id);
+    c_input.disabled = ! c_checkbox.checked;
+
+    if(c_checkbox.checked) {
+        c_input.value = 1;
+    } else {
+        c_input.value = null;
+        document.getElementById("div-"+id).classList.add("d-none");
+    }
+
+    c_input1.disabled = ! c_checkbox.checked;
+    c_input2.disabled = ! c_checkbox.checked;
+}
+
+</script>
