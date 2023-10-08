@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "E:\\S5\\Mr Tovo\\clientGRH\\clientGRH.csproj": {}
+    "D:\\S5\\mr tovo\\clientGRH\\clientGRH.csproj": {}
   },
   "projects": {
-    "E:\\S5\\Mr Tovo\\clientGRH\\clientGRH.csproj": {
+    "D:\\S5\\mr tovo\\clientGRH\\clientGRH.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\S5\\Mr Tovo\\clientGRH\\clientGRH.csproj",
+        "projectUniqueName": "D:\\S5\\mr tovo\\clientGRH\\clientGRH.csproj",
         "projectName": "clientGRH",
-        "projectPath": "E:\\S5\\Mr Tovo\\clientGRH\\clientGRH.csproj",
-        "packagesPath": "C:\\Users\\ITU\\.nuget\\packages\\",
-        "outputPath": "E:\\S5\\Mr Tovo\\clientGRH\\obj\\",
+        "projectPath": "D:\\S5\\mr tovo\\clientGRH\\clientGRH.csproj",
+        "packagesPath": "C:\\Users\\ROG\\.nuget\\packages\\",
+        "outputPath": "D:\\S5\\mr tovo\\clientGRH\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ITU\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\ROG\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -37,6 +39,12 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "Npgsql": {
+              "target": "Package",
+              "version": "[7.0.6, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -56,7 +64,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }
