@@ -60,3 +60,5 @@ E:\S5\Mr Tovo\clientGRH\obj\Debug\net7.0\refint\clientGRH.dll
 E:\S5\Mr Tovo\clientGRH\obj\Debug\net7.0\clientGRH.pdb
 E:\S5\Mr Tovo\clientGRH\obj\Debug\net7.0\clientGRH.genruntimeconfig.cache
 E:\S5\Mr Tovo\clientGRH\obj\Debug\net7.0\ref\clientGRH.dll
+D:\S5\mr tovo\clientGRH\bin\Debug\net7.0\Npgsql.dll
+D:\S5\mr tovo\clientGRH\obj\Debug\net7.0\clientGRH.csproj.CopyComplete

@@ -1,0 +1,105 @@
+<link rel="stylesheet" href="~/css/ajoutCv.css"/>
+<div class="container ctn">
+    <form asp-controller="Cv" asp-action="test" method="GET">
+        <div id="step1">
+            
+
+            <h3>Etape 1: information candidat</h3>
+            <div class="mb-3">
+                <label for="nomCandidat" class="form-label">Nom candidat:</label>
+                <input type="text" class="form-control" id="nomCandidat" name="nomCandidat">
+            </div>
+            <div class="mb-3">
+                <label for="prenomCandidat" class="form-label">Prénom:</label>
+                <input type="text" class="form-control" id="prenomCandidat" name="prenomCandidat">
+            </div>
+            <div class="mb-3">
+                <label for="telCandidat" class="form-label">Téléphone:</label>
+                <input type="text" class="form-control" id="telCandidat" name="telCandidat">
+            </div>
+            <div class="mb-3">
+                <label for="mailCandidat" class="form-label">Email:</label>
+                <input type="email" class="form-control" id="mailCandidat" name="mailCandidat">
+            </div>
+            <div class="mb-3">
+                <label for="adresseCandidat" class="form-label">Adresse:</label>
+                <input type="text" class="form-control" id="adresseCandidat" name="adresseCandidat">
+            </div>
+            <button class="btn btn-primary" type="button" id="next-step">Next</button>
+            
+        </div>
+
+        <div id="step2" class="d-none">
+            <h3>Etape 2: critere candidat</h3>
+
+            @foreach (var critere in ViewBag.allCritere)
+            {
+                <p>@critere.Libelle</p>
+                @if(critere.Nature == 0)
+                {
+                    <select class="form-select" name="critereOption-@critere.Id">
+                        @foreach (var option in ViewBag.dicoCritereOption[critere.Id])
+                        {
+                            <option value="@option.Id">@option.Libelle</option>
+                        }
+                    </select>
+                }
+                else if(critere.Nature == 1)
+                {
+                    foreach (var option in ViewBag.dicoCritereOption[critere.Id])
+                    {
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="critereOption-@critere.Id-@option.Id" name="critereOption-@critere.Id" value="@option.Id">
+                            <label class="form-check-label" for="critereOption-@critere.Id-@option.Id">
+                                @option.Libelle
+                            </label>
+                        </div>
+                    }
+                }
+
+                else if(critere.Nature == 2)
+                {
+                    foreach (var option in ViewBag.dicoCritereOption[critere.Id])
+                    {
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="critereOption-@critere.Id-@option.Id" name="critereOption-@critere.Id" value="@option.Id">
+                            <label class="form-check-label" for="critereOption-@critere.Id-@option.Id">
+                                @option.Libelle
+                            </label>
+                        </div>
+                    }
+                }
+                <br>
+            }
+            <input type="hidden"  class="form-control" name="idbesoin" value="@ViewBag.idbesoin">
+            <button type="button" class="btn btn-secondary" id="prev-step">Precedent</button>
+            <button class="btn btn-success" type="submit">OK</button>
+        </div>
+    </form>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var currentStep = 1;
+        var form = document.getElementById("multi-step-form");
+        var step1 = document.getElementById("step1");
+        var step2 = document.getElementById("step2");
+        var nextButton = document.getElementById("next-step");
+        var prevButton = document.getElementById("prev-step");
+
+        nextButton.addEventListener("click", function () {
+            if (currentStep === 1) {
+                currentStep++;
+                step1.classList.add("d-none");
+                step2.classList.remove("d-none");
+            }
+        });
+
+        prevButton.addEventListener("click", function () {
+            if (currentStep === 2) {
+                currentStep--;
+                step2.classList.add("d-none");
+                step1.classList.remove("d-none");
+            }
+        });
+    });
+</script>
