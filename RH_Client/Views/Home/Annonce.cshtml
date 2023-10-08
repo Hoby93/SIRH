@@ -1,0 +1,96 @@
+@{
+    ViewData["Title"] = "Annonce";
+}
+
+<div class="container">
+  <div class="page-banner">
+    <div class="row justify-content-center align-items-center h-100">
+      <div class="col-md-6 wrap">
+        <nav aria-label="Breadcrumb">
+          <ul class="breadcrumb justify-content-center py-0 bg-transparent">
+            <li class="breadcrumb-item"><a asp-area="" asp-controller="Home" asp-action="Index">Accueil</a></li>
+            <li class="breadcrumb-item active">Annonce</li>
+          </ul>
+        </nav>
+        <h1 class="text-center">Les Annonces</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-section">
+    <div class="row mb-5 m-4">
+      <div class="col-sm-10">
+        <form action="#" class="form-search-blog">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <select id="categories" class="custom-select bg-light">
+                <option>Selection poste</option>
+              </select>
+            </div>
+            <input type="text" class="form-control" placeholder="Votre recherche ici..">
+          </div>
+        </form>
+      </div>
+      <div class="col-sm-2 text-sm-right">
+        <button class="btn btn-secondary">Filtrer <span class="mai-filter"></span></button>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="card-service">
+            <div class="display-4 text-center text-primary mb-4"><span class="mai-business"></span></div>
+            <div class="body" style="">
+              <h5 class="text-secondary">Ingenieur Prix et Chiffrage</h5>
+              <p class="text-limit">
+                L'Ingenieur de chiffrage est charge de determiner les couts associes a la realisations des projets ou des produits, d'etablir des avis competitif
+              </p>
+              <a asp-area="" asp-controller="Home" asp-action="InfoAnnonce" class="btn btn-primary">Savoir plus</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="card-service">
+            <div class="display-4 text-center text-primary mb-4"><span class="mai-business"></span></div>
+            <div class="body" style="">
+              <h5 class="text-secondary">Ingenieur Prix et Chiffrage</h5>
+              <p class="text-limit">
+                L'Ingenieur de chiffrage est charge de determiner les couts associes a la realisations des projets ou des produits, d'etablir des avis competitif
+              </p>
+              <a asp-area="" asp-controller="Home" asp-action="InfoAnnonce" class="btn btn-primary">Savoir plus</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="card-service">
+            <div class="display-4 text-center text-primary mb-4"><span class="mai-business"></span></div>
+            <div class="body" style="">
+              <h5 class="text-secondary">Ingenieur Prix et Chiffrage</h5>
+              <p class="text-limit">
+                L'Ingenieur de chiffrage est charge de determiner les couts associes a la realisations des projets ou des produits, d'etablir des avis competitif
+              </p>
+              <a asp-area="" asp-controller="Home" asp-action="InfoAnnonce" class="btn btn-primary">Savoir plus</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <nav aria-label="Page Navigation">
+        <ul class="pagination justify-content-center mt-5">
+          <li class="page-item m-1">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Precedent</a>
+          </li>
+          <li class="page-item m-1 active"><a class="page-link" href="#">1</a></li>
+          <li class="page-item m-1" aria-current="page">
+            <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="page-item m-1"><a class="page-link" href="#">3</a></li>
+          <li class="page-item m-1">
+            <a class="page-link" href="#">Suivant</a>
+          </li>
+        </ul>
+      </nav>
+    </div> <!-- .container -->
+</div> <!-- .page-section -->

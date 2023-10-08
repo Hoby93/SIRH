@@ -23,6 +23,17 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult Annonce()
+    {
+        return View("Annonce");
+    }
+
+    public IActionResult InfoAnnonce()
+    {
+        return View("InfoAnnonce");
+    }
+
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

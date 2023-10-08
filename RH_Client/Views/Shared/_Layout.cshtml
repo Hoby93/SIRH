@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - clientGRH</title>
+    <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/clientGRH.styles.css" asp-append-version="true" />
@@ -16,7 +16,6 @@
 <body>
     <header>
         <div class="back-to-top"></div>
-
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky" data-offset="500">
       <div class="container">
@@ -28,23 +27,20 @@
 
         <div class="navbar-collapse collapse" id="navbarContent">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="index.html">Home</a>
+            <li class="nav-item">
+              <a class='nav-link @(ViewBag.Title == "Accueil" ? "active" : "")' asp-area="" asp-controller="Home" asp-action="Index">Accueil</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
+              <a class='nav-link @(ViewBag.Title == "Annonce" ? "active" : "")' asp-area="" asp-controller="Home" asp-action="Annonce">Annonce</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Services</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Blog</a>
+              <a class="nav-link" href="#">Resultat</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Contact</a>
             </li>
             <li class="nav-item">
-              <a class="btn btn-primary ml-lg-2" href="#">Free Analytics</a>
+              <a class="btn btn-primary ml-lg-2" href="#">Notre equipe</a>
             </li>
           </ul>
         </div>
@@ -65,7 +61,9 @@
       <div class="row mb-5">
         <div class="col-lg-3 py-3">
           <h3>SEOGram</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero amet, repellendus eius blanditiis in iusto eligendi iure.</p>
+          <p>
+            Nous tenons à vous remercier chaleureusement d'avoir pris le temps de visiter notre page.
+          </p>
 
           <div class="social-media-button">
             <a href="#"><span class="mai-logo-facebook-f"></span></a>
@@ -76,27 +74,26 @@
           </div>
         </div>
         <div class="col-lg-3 py-3">
-          <h5>Company</h5>
+          <h5>Companie</h5>
           <ul class="footer-menu">
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Career</a></li>
-            <li><a href="#">Advertise</a></li>
-            <li><a href="#">Terms of Service</a></li>
-            <li><a href="#">Help & Support</a></li>
+            <li><a href="#">Apropos</a></li>
+            <li><a href="#">Carrier</a></li>
+            <li><a href="#">Contrat</a></li>
+            <li><a href="#">Aide & Support</a></li>
           </ul>
         </div>
         <div class="col-lg-3 py-3">
-          <h5>Contact Us</h5>
-          <p>203 Fake St. Mountain View, San Francisco, California, USA</p>
+          <h5>Contact</h5>
+          <p>101 Antananarivo. IB 358, Andoharanofotsy</p>
           <a href="#" class="footer-link">+00 1122 3344 5566</a>
           <a href="#" class="footer-link">seogram@temporary.com</a>
         </div>
         <div class="col-lg-3 py-3">
-          <h5>Newsletter</h5>
-          <p>Get updates, news or events on your mail.</p>
+          <h5>Avis</h5>
+          <p>Connectez vous, fait nous part de vos remarque.</p>
           <form action="#">
-            <input type="text" class="form-control" placeholder="Enter your email..">
-            <button type="submit" class="btn btn-success btn-block mt-2">Subscribe</button>
+            <input type="text" class="form-control" placeholder="Entez votre email...">
+            <button type="submit" class="btn btn-success btn-block mt-2">Confirmer</button>
           </form>
         </div>
       </div>

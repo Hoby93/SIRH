@@ -20,3 +20,10 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.text-limit {
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Limite le texte à 4 lignes */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
