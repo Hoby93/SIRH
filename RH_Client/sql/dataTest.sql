@@ -31,7 +31,7 @@ insert into  candidat_critere values(default, 2, 21);
 
 
 create view vw_candidatoptionnote as
-select candidat_critere.*, critere.nature, critere_option_note.note, critere_option_note.idbesoincritere,besoin_critere.coeff  from candidat_critere
+select candidat_critere.*, critere.nature, critere_option_note.note, critere_option_note.idbesoincritere,besoin_critere.idbesoin,besoin_critere.coeff  from candidat_critere
     join critere_option_note on candidat_critere.idcritereoption = critere_option_note.idcritereoption
     join critere_option on critere_option_note.idcritereoption = critere_option.id
     join besoin_critere on critere_option.idcritere = besoin_critere.idcritere

@@ -111,7 +111,6 @@ namespace RH_Client.Models
 
         public Boolean IsAdmis(Candidat candidat, NpgsqlConnection cnx) {
             int age = 2023 - candidat.Dtn.Year;
-            Console.WriteLine("note"+this.getNoteCriteres(candidat, cnx));
             if(this.getNoteCriteres(candidat, cnx) >= noteadmis && age >= agemin && age <= agemax) {
                 return true;
             }
@@ -136,6 +135,7 @@ namespace RH_Client.Models
         }
 
         public double getNoteCriteres(Candidat candidat, NpgsqlConnection cnx) {
+            //ze idbesoincandidat voalohany anle candidat amle besoin io ao no azo amnito donc tsy afaka mi postule imbedebebe fa ze voloahany ihany no hita
             int idbesoincandidat = new BddObjet().getInteger($"select id from besoin_candidat where idbesoin = {this.Id} and idcandidat = {candidat.Id}", cnx);
             Object[] options = new CandidatOptionNote().select($"where idcandidat = {idbesoincandidat} order by idcritereoption, idbesoincritere", cnx);
             double ans = 0;
@@ -144,15 +144,21 @@ namespace RH_Client.Models
             int last  = 0;
 
             foreach(CandidatOptionNote option in options) {
-                coeff += incCoeff(option, isAddition);
-
                 if(option.Idcritereoption != last) {
+                    coeff += incCoeff(option,isAddition);
                     ans += option.Note * option.Coeff;
                     last = option.Idcritereoption;
+
+                    Console.WriteLine("idcritereoption = "+option.Idcritereoption);
+                    Console.WriteLine("coeff = "+incCoeff(option,isAddition));
+                    Console.WriteLine(option.Note+" * "+option.Coeff);
+                    Console.WriteLine("----");
                 }
             }
 
-            return  ans;
+            Console.WriteLine(ans+"/"+coeff);
+            Console.WriteLine(ans/coeff);
+            return  ans/coeff;
         }
     }
 }

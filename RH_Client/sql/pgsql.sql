@@ -66,6 +66,11 @@ create table critere_option_note(
     foreign key(idcritereoption) references critere_option(id)
 );
 
+-- select * from besoin_critere
+-- join critere_option_note on besoin_critere.id = critere_option_note.idbesoincritere;
+-- join critere_option on critere_option.id = critere_option_note.idcritereoption
+-- join critere on critere.id = besoin_critere.idcritere;
+
 create table candidat(
     id serial primary key,
     nom varchar(80),
