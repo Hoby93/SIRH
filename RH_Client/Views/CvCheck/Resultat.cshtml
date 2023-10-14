@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="~/css/resultatCv.css">
+<div class="container ctn d-none" id="corps">
+    <h1>Résultats</h1>
+
+    @if(ViewBag.flag){
+        <div class="alert alert-success" role="alert">
+            <h2 class="custom-title">Félicitations!</h2>
+            <p>Vous avez les notes requises pour être accepté.</p>
+        </div>
+    } else {
+
+        <div class="alert alert-danger" role="alert">
+            <h2 class="custom-title">Désolé!</h2>
+            <p>Vous n'avez pas les notes requises pour être accepté.</p>
+        </div>
+    
+    }
+
+</div>
+
+<div class="container ctn-sary" id="chargement">
+    <img src="~/img/load.gif">
+    <p>En cours de traitement,patientez</p>
+</div>
+
+<script>
+    var sary = document.getElementById("chargement");
+    var corps = document.getElementById("corps");
+
+    document.addEventListener("DOMContentLoaded", () => {
+        var millisecondsToWait = 2000;
+        setTimeout(function() {
+            sary.classList.add("d-none");
+            corps.classList.remove("d-none");
+        }, millisecondsToWait);
+    });
+</script>
+

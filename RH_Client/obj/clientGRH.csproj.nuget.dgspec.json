@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\S5\\mr tovo\\clientGRH\\clientGRH.csproj": {}
+    "D:\\S5\\mr tovo\\RH_Client\\clientGRH.csproj": {}
   },
   "projects": {
-    "D:\\S5\\mr tovo\\clientGRH\\clientGRH.csproj": {
+    "D:\\S5\\mr tovo\\RH_Client\\clientGRH.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\S5\\mr tovo\\clientGRH\\clientGRH.csproj",
+        "projectUniqueName": "D:\\S5\\mr tovo\\RH_Client\\clientGRH.csproj",
         "projectName": "clientGRH",
-        "projectPath": "D:\\S5\\mr tovo\\clientGRH\\clientGRH.csproj",
+        "projectPath": "D:\\S5\\mr tovo\\RH_Client\\clientGRH.csproj",
         "packagesPath": "C:\\Users\\ROG\\.nuget\\packages\\",
-        "outputPath": "D:\\S5\\mr tovo\\clientGRH\\obj\\",
+        "outputPath": "D:\\S5\\mr tovo\\RH_Client\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ROG\\AppData\\Roaming\\NuGet\\NuGet.Config",

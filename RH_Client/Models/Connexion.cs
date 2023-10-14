@@ -1,6 +1,6 @@
 using Npgsql;
 
-namespace clientGRH.Models
+namespace RH_Client.Models
 {
     public class Connexion
     {
@@ -21,6 +21,6 @@ namespace clientGRH.Models
             {
                 throw e;
             }
-        }    
+        }
     }
 }

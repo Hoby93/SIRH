@@ -1,7 +1,7 @@
 ﻿using Npgsql;
 using System.Reflection;
 
-namespace clientGRH.Models
+namespace RH_Client.Models
 {
     public class BddObjet
     {
@@ -164,7 +164,49 @@ namespace clientGRH.Models
             Script_Principal 
         **/
 
+        public Object Select(String query_clauses, NpgsqlConnection connection)
+        {
+            bool shouldCloseConnection = false;
 
+            // Create a new connection if the provided connection is null
+            if (connection == null)
+            {
+                string connectionString = $"Server=localhost;Port=5432;Database={db};User Id={user};Password={pwd};";
+                connection = new NpgsqlConnection(connectionString);
+                connection.Open();
+                shouldCloseConnection = true;
+            }
+
+            List<String> attributsName = getFieldsOnDatabase(connection);
+
+            string query = "SELECT * FROM " + tableName() + " " + query_clauses;
+            using (var command = new NpgsqlCommand(query, connection))
+            {
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Object objectInstance = Activator.CreateInstance(this.GetType());
+                        foreach (String attributName in attributsName)
+                        {
+                            int colNum = reader.GetOrdinal(attributName);
+                            if(!reader.IsDBNull(colNum)) {
+                                this.setProprety(objectInstance, reader.GetValue(colNum), attributName);
+                            }
+                        }
+                        return objectInstance;
+                    }
+                }
+            }
+
+            // Close the connection if it was created within this method
+            if (shouldCloseConnection)
+            {
+                connection.Close();
+            }
+
+            return null;
+        }
 
         public Object[] select(String query_clauses, NpgsqlConnection connection)
         {
