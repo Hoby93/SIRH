@@ -31,8 +31,7 @@ public class CvController : Controller
 
     public IActionResult ajoutCv()
     {
-    
-        // Request.Form izy raha POST
+        
         Critere refs = new Critere();
         List<Critere> critere =  refs.getCritereByBesoin(null,int.Parse(Request.Form["idbesoin"]));
 
