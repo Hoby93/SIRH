@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using clientGRH.Models;
+using RH_Client.Models;
 
-namespace clientGRH.Controllers;
+namespace RH_Client.Controllers;
 
 public class HomeController : Controller
 {
@@ -25,14 +25,19 @@ public class HomeController : Controller
 
     public IActionResult Annonce()
     {
+        Announcement[] annonces = new Announcement().GetAll(null);
+        ViewBag.annonces = annonces;
         return View("Annonce");
     }
 
-    public IActionResult InfoAnnonce()
+    public IActionResult InfoAnnonce(int idannonce)
     {
+        Announcement annonce = new Announcement();
+        annonce.Id = idannonce;
+        annonce = annonce.Find(null);
+        ViewBag.annonce = annonce;
         return View("InfoAnnonce");
     }
-
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()

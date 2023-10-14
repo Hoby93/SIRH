@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "11iRfPjOlNWKqnN04HVmizyHCoZ+Dqm+Ci9jgvg1ZVf3qA1U8oXZpkwSV1kYZqwBVss0Jfo37hda6GzWC8u2EA==",
+  "dgSpecHash": "EWT3jLvhlSHSN5TH93p5jC3EyALZxomAlq2LskHAZZRLew5WTUZDka05cJ6MleDtSzBSehWRrEzruYDii+BYjA==",
   "success": true,
-  "projectFilePath": "D:\\S5\\mr tovo\\clientGRH\\clientGRH.csproj",
+  "projectFilePath": "D:\\S5\\mr tovo\\RH_Client\\clientGRH.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ROG\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0\\microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\ROG\\.nuget\\packages\\npgsql\\7.0.6\\npgsql.7.0.6.nupkg.sha512"

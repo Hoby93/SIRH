@@ -1,4 +1,4 @@
-namespace clientGRH.Models;
+namespace RH_Client.Models;
 
 public class ErrorViewModel
 {

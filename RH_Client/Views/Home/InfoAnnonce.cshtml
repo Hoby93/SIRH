@@ -1,5 +1,6 @@
-@{
+@{  
     ViewData["Title"] = "Annonce";
+    Announcement annonce = ViewBag.annonce;
 }
 
 <div class="page-section pt-5">
@@ -15,35 +16,34 @@
       <div class="row">
         <div class="col-lg-8">
           <div class="blog-single-wrap">
-            <h1 class="post-title">Ingenieur Prix et Chiffrage</h1>
+            <h1 class="post-title">@annonce.Besoin.Poste.Libelle</h1>
             <div class="post-meta mt-3 mb-5">
               <div class="post-date">
                 <span class="icon">
                   <span class="mai-time-outline"></span>
-                </span> <a href="#">01/01/2023</a>
+                </span> <a href="#">@annonce.DateEnvoi.ToShortDateString()</a>
               </div>
               <div class="post-comment-count ml-2">
                 <span class="icon">
                   <span class="mai-business-outline"></span>
-                </span> <a href="#">SeGram.</a>
+                </span> <a href="#">@annonce.Entreprise.Nom</a>
               </div>
             </div>
             <div class="post-content">
-              <p>SeoGram. vous propose un contrat de travail a durree indeterminee</p>
-              <p>L'Ingenieur de chiffrage est charge de determiner les couts associes a la realisations des projets ou des produits, d'etablir des avis competitif.</p>
+              <p>@annonce.Besoin.Contrat.Libelle</p>
+              <p>@annonce.Besoin.Poste.Libelle</p>
             </div>
             <div class="col-lg-6 py-3 wow fadeInUp">
               <span class="subhead">Profil</span>
               <div class="divider"></div>
 
               <p>
-                <span class="text-dark">Critere: </span> CritereOption <br>
-                <span class="text-dark">Critere: </span> CritereOption <br>
-                <span class="text-dark">Critere: </span> CritereOption <br>
-                <span class="text-dark">Critere: </span> CritereOption <br>
-                <span class="text-dark">Critere: </span> CritereOption <br>
+                @foreach (var item in annonce.ProfilMinimal)
+                {
+                  <span class="text-dark">@item.Critere.Libelle: </span> @item.Option.Libelle <br>
+                }
               </p>
-              <a href="#" class="btn btn-primary mt-3">Postuler</a>
+              <a href="@Url.Action("formulaireAjoutCv", "Cv", new {idbesoin = annonce.IdBesoin})" class="btn btn-primary mt-3">Postuler</a>
             </div>
           </div>
 

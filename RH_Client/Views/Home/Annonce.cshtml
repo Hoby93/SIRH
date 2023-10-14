@@ -1,5 +1,6 @@
 @{
     ViewData["Title"] = "Annonce";
+    Announcement[] annonces = ViewBag.annonces;
 }
 
 <div class="container">
@@ -38,42 +39,21 @@
     </div>
     <div class="container">
       <div class="row">
-        <div class="col-lg-4">
+        @foreach (var item in annonces)
+        {
+          <div class="col-lg-4">
           <div class="card-service">
             <div class="display-4 text-center text-primary mb-4"><span class="mai-business"></span></div>
             <div class="body" style="">
-              <h5 class="text-secondary">Ingenieur Prix et Chiffrage</h5>
+              <h5 class="text-secondary">@item.Besoin.Poste.Libelle | @item.Entreprise.Nom</h5>
               <p class="text-limit">
-                L'Ingenieur de chiffrage est charge de determiner les couts associes a la realisations des projets ou des produits, d'etablir des avis competitif
+                @item.Besoin.Poste.Description
               </p>
-              <a asp-area="" asp-controller="Home" asp-action="InfoAnnonce" class="btn btn-primary">Savoir plus</a>
+              <a href="@Url.Action("InfoAnnonce", "Home", new {idannonce = item.Id})" class="btn btn-primary">Savoir plus</a>
             </div>
           </div>
         </div>
-        <div class="col-lg-4">
-          <div class="card-service">
-            <div class="display-4 text-center text-primary mb-4"><span class="mai-business"></span></div>
-            <div class="body" style="">
-              <h5 class="text-secondary">Ingenieur Prix et Chiffrage</h5>
-              <p class="text-limit">
-                L'Ingenieur de chiffrage est charge de determiner les couts associes a la realisations des projets ou des produits, d'etablir des avis competitif
-              </p>
-              <a asp-area="" asp-controller="Home" asp-action="InfoAnnonce" class="btn btn-primary">Savoir plus</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="card-service">
-            <div class="display-4 text-center text-primary mb-4"><span class="mai-business"></span></div>
-            <div class="body" style="">
-              <h5 class="text-secondary">Ingenieur Prix et Chiffrage</h5>
-              <p class="text-limit">
-                L'Ingenieur de chiffrage est charge de determiner les couts associes a la realisations des projets ou des produits, d'etablir des avis competitif
-              </p>
-              <a asp-area="" asp-controller="Home" asp-action="InfoAnnonce" class="btn btn-primary">Savoir plus</a>
-            </div>
-          </div>
-        </div>
+        }
       </div>
     </div>
 
