@@ -6,6 +6,7 @@
         <div class="alert alert-success" role="alert">
             <h2 class="custom-title">Félicitations!</h2>
             <p>Vous avez les notes requises pour être accepté.</p>
+            <p><a class="btn btn-primary btn-block" href='@Url.Action("Index", "Test",new {idposte = ViewBag.idposte,idbesoin = ViewBag.idbesoin})'>Faire le test</a></p>
         </div>
     } else {
 

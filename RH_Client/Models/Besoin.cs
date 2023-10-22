@@ -135,9 +135,14 @@ namespace RH_Client.Models
         }
 
         public double getNoteCriteres(Candidat candidat, NpgsqlConnection cnx) {
-            //ze idbesoincandidat voalohany anle candidat amle besoin io ao no azo amnito donc tsy afaka mi postule imbedebebe fa ze voloahany ihany no hita
+            //ze idbesoincandidat voalohany anle candidat amle besoin io ao no azo amnito donc tsy afaka mi postule imbedebebe fa ze voloahany ihany no hita(max ra atao hita foana)
             int idbesoincandidat = new BddObjet().getInteger($"select id from besoin_candidat where idbesoin = {this.Id} and idcandidat = {candidat.Id}", cnx);
             Object[] options = new CandidatOptionNote().select($"where idcandidat = {idbesoincandidat} order by idcritereoption, idbesoincritere", cnx);
+            
+             Console.WriteLine($"select id from besoin_candidat where idbesoin = {this.Id} and idcandidat = {candidat.Id}");
+            Console.WriteLine($"where idcandidat = {idbesoincandidat} order by idcritereoption, idbesoincritere");
+
+
             double ans = 0;
             double coeff = 0;
             Boolean isAddition = false;

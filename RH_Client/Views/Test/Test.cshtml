@@ -1,0 +1,87 @@
+@using RH_Client.Models;
+@{
+    ViewData["Title"] = "Page Test";
+    Object[] questions = (Object[]) ViewBag.Questions;
+    int count = 0;
+}
+
+
+<div class="row mt-5">
+  <nav aria-label="Breadcrumb">
+    <ul class="breadcrumb p-0 mb-1 bg-transparent">
+      <li class="breadcrumb-item"><a asp-area="" asp-controller="Home" asp-action="Index">Insciption</a></li>
+      <li class="breadcrumb-item active">Evaluation</li>
+    </ul>
+  </nav>
+  <div class="col-md-12 grid-margin stretch-card">
+    <div class="card-service" style="max-width: unset;">
+      <div class="card-body text-left">
+        <div id="detailedReports" class="carousel slide detailed-report-carousel position-static pt-2" data-ride="carousel">
+          <form class="pt-3" method="post" asp-controller="Test" asp-action="Answers">
+            <div class="carousel-inner">
+              <input type="hidden" value="@ViewBag.idcandidat" name="idcandidat">
+              <input type="hidden" value="@ViewBag.idbesoin" name="idbesoin">
+              <input type="hidden" value="@ViewBag.idposte" name="idposte">
+              
+              <div class="carousel-item active">
+                <div class="row">
+                  <div class="col-lg-6 py-3">
+                    <h1 class="mb-4">Vous devez passer cette evaluation pour continuer</h1>
+                    <p class="text-lg text-grey mb-5">Cocher la ou les reponses correctes</p>
+                  </div>
+                  <div class="col-lg-6 py-3">
+                    <div class="img-fluid py-3 text-center">
+                      <img src="~/img/hero-header.png" alt="" style="height: 200px;">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              @foreach (Questions question in questions) {
+              <div class="carousel-item">
+                <div class="row">
+                  <div class="col-lg-6 py-3">
+                    <h2 class="title-section">@question.Question</h2>
+                    <div class="divider"></div>
+
+                    <div class="ml-3">
+                      @foreach (Proposition proposition in question.GetPropositions(null)) {
+                      <p class="text-grey">
+                        <input class="checkbox" name="idpropositions[]" value="@proposition.Id" type="checkbox">
+                        <span class="ml-1">@proposition.Libelle</span>
+                      </p>
+                      }
+                    </div>
+
+                  </div>
+                  <div class="col-lg-6 py-3">
+                    <div class="img-fluid py-3 text-center">
+                      <img src="~/img/searching.png" alt="" style="height: 200px;">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              }
+            </div>
+
+            <nav aria-label="Page Navigation">
+              <ul class="pagination mt-5">
+                <li class="page-item m-1">
+                  <a class="page-link" href="#detailedReports" role="button" data-slide="prev">Precedent</a>
+                </li>
+                <li class="page-item m-1">
+                  <a class="page-link" href="#detailedReports" role="button" data-slide="next">Suivant</a>
+                </li>
+                <li class="page-item m-1 text-sm-right"></li>
+                <li class="page-item m-1 text-sm-right">
+                  <div class="col-md-12" style="margin-left: 570%">
+                    <button type="submit" class="btn-primary page-link">Confirmer</button>
+                  </div>
+                </li>
+              </ul>
+            </nav>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

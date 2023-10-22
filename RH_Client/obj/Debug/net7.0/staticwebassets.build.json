@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "AWoUhNEJlw2m+YIPEvp1j9yIU2Vo1r6y1Qv54Toh2Zg=",
+  "Hash": "Eiixrlh6q1YRX2HLw4YtMB311ejBcmfdGCHkg4D8lSw=",
   "Source": "clientGRH",
   "BasePath": "_content/clientGRH",
   "Mode": "Default",
@@ -425,6 +425,23 @@
       "OriginalItemSpec": "wwwroot\\img\\blog\\blog-6.jpg"
     },
     {
+      "Identity": "D:\\S5\\mr tovo\\RH_Client\\wwwroot\\img\\hero-header.png",
+      "SourceId": "clientGRH",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\S5\\mr tovo\\RH_Client\\wwwroot\\",
+      "BasePath": "_content/clientGRH",
+      "RelativePath": "img/hero-header.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\hero-header.png"
+    },
+    {
       "Identity": "D:\\S5\\mr tovo\\RH_Client\\wwwroot\\img\\load.gif",
       "SourceId": "clientGRH",
       "SourceType": "Discovered",
@@ -508,6 +525,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\person\\person_4.jpg"
+    },
+    {
+      "Identity": "D:\\S5\\mr tovo\\RH_Client\\wwwroot\\img\\searching.png",
+      "SourceId": "clientGRH",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\S5\\mr tovo\\RH_Client\\wwwroot\\",
+      "BasePath": "_content/clientGRH",
+      "RelativePath": "img/searching.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\searching.png"
     },
     {
       "Identity": "D:\\S5\\mr tovo\\RH_Client\\wwwroot\\img\\services\\service-1.svg",

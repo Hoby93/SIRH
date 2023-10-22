@@ -1,7 +1,5 @@
 -- Donnees de teste:
 
-/* 29-09-2023*/
-
 insert into services values(default, 'Informatique');
 insert into services values(default, 'Ressource Humaine');
 insert into services values(default, 'Commerciale');
@@ -31,4 +29,4 @@ insert into poste values(default, 4, 'Gestionnaire des Stocks', 'En charge de l 
 
 -- Les notes par defaut
 
-insert into critere values();
+-- insert into critere values();

@@ -16,6 +16,8 @@ public class CvCheckController : Controller
         Boolean estValider = besoin.IsAdmis(candidat,null);
 
         ViewBag.flag = estValider;
+        ViewBag.idposte = besoin.Idposte;
+        ViewBag.idbesoin = besoin.Id;
 
         return View("Resultat");
     }
