@@ -369,7 +369,7 @@ namespace RH_Client.Models
                 String values = scriptInsertValues(connection);
 
                 string query = $"insert into {tableName()} ({columns}) values ({values})";
-                // Console.WriteLine(query);
+                Console.WriteLine(query);
 
                 command.CommandText = query;
 

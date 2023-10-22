@@ -1,5 +1,3 @@
-/* 29-09-2023 */
-
 create table services(
     id serial primary key,
     libelle varchar(80)
@@ -117,29 +115,9 @@ create table proposition(
 
 create table candidat_reponse(
     id serial primary key,
+    idbesoincandidat int,
     idproposition int,
-    foreign key(idproposition) references proposition(id)
-);
-
-create table question(
-    id serial primary key,
-    idposte int,
-    question varchar(120),
-    points int,
-    foreign key(idposte) references poste(id)
-);
-
-create table proposition(
-    id serial primary key,
-    idquestion int,
-    libelle varchar(120),
-    etat int, -- Vrai(1) ou Faux(0)
-    foreign key(idquestion) references question(id)
-);
-
-create table candidat_reponse(
-    id serial primary key,
-    idproposition int,
+    foreign key(idbesoincandidat) references besoin_candidat(id),
     foreign key(idproposition) references proposition(id)
 );
 

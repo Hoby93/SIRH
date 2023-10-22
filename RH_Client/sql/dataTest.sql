@@ -18,8 +18,8 @@ insert into candidat values(2, 'RAHARY', 'Malala', '1960-05-23', '0342456733', '
 insert into besoin_candidat values(default, 1,  1);
 insert into besoin_candidat values(default, 2,  1);
 
-insert into  candidat_critere values(default, 1, 4);
-insert into  candidat_critere values(default, 1, 8);
+insert into  candidat_critere values(default, 1, 6);
+insert into  candidat_critere values(default, 1, 10);
 insert into  candidat_critere values(default, 1, 20);
 insert into  candidat_critere values(default, 1, 21);
 
@@ -36,3 +36,7 @@ select candidat_critere.*, critere.nature, critere_option_note.note, critere_opt
     join critere_option on critere_option_note.idcritereoption = critere_option.id
     join besoin_critere on critere_option.idcritere = besoin_critere.idcritere
     join critere on critere_option.idcritere = critere.id;
+
+create view vw_candidat_reponse as
+select candidat_reponse.*,proposition.idquestion from candidat_reponse
+join proposition on candidat_reponse.idproposition = proposition.id;

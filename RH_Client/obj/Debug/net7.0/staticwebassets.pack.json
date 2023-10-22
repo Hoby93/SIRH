@@ -93,6 +93,10 @@
       "PackagePath": "staticwebassets\\img\\blog\\blog-6.jpg"
     },
     {
+      "Id": "D:\\S5\\mr tovo\\RH_Client\\wwwroot\\img\\hero-header.png",
+      "PackagePath": "staticwebassets\\img\\hero-header.png"
+    },
+    {
       "Id": "D:\\S5\\mr tovo\\RH_Client\\wwwroot\\img\\load.gif",
       "PackagePath": "staticwebassets\\img\\load.gif"
     },
@@ -111,6 +115,10 @@
     {
       "Id": "D:\\S5\\mr tovo\\RH_Client\\wwwroot\\img\\person\\person_4.jpg",
       "PackagePath": "staticwebassets\\img\\person\\person_4.jpg"
+    },
+    {
+      "Id": "D:\\S5\\mr tovo\\RH_Client\\wwwroot\\img\\searching.png",
+      "PackagePath": "staticwebassets\\img\\searching.png"
     },
     {
       "Id": "D:\\S5\\mr tovo\\RH_Client\\wwwroot\\img\\services\\service-1.svg",
