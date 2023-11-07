@@ -1,8 +1,17 @@
 @{  
-    ViewData["Title"] = "Annonce";
+    ViewData["Page"] = "Annonce";
+    ViewData["Title"] = "Detail Annonce";
     Announcement annonce = ViewBag.annonce;
 }
 
+<style>
+  .b-0 {
+    border: 0px;
+  }
+  .d-none {
+    display: none;
+  }
+</style>
 <div class="page-section pt-5">
     <div class="container">
       <nav aria-label="Breadcrumb">
@@ -43,7 +52,7 @@
                   <span class="text-dark">@item.Critere.Libelle: </span> @item.Option.Libelle <br>
                 }
               </p>
-              <a href="@Url.Action("formulaireAjoutCv", "Cv", new {idbesoin = annonce.IdBesoin})" class="btn btn-primary mt-3">Postuler</a>
+              <a href="@Url.Action("formulaireAjoutCv", "Cv", new {idbesoin = annonce.IdBesoin,idannonce = annonce.Id})" class="btn btn-primary mt-3">Postuler</a>
             </div>
           </div>
 
@@ -89,6 +98,40 @@
           </div>
         </div>
       </div>
-
     </div>
-  </div>
+</div>
+
+<a id="btn-ErrorMessage" class="d-none" data-toggle="modal" data-target="#error-message">
+  #
+</a>
+
+<!-- ErrorMessage - Modal -->
+<div id="error-message" class="modal fade mt-5" role="dialog" aria-labelledby="error-message" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header b-0">
+                <h4 class="modal-title">Message Exception</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <p>Erreur, @ViewBag.ErrorMessage</p>
+            </div>
+            <div class="modal-footer b-0">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-times"></i>&nbsp;&nbsp;Compris</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Modal -->
+
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("btn-ErrorMessage").click();
+  });
+</script>
+}

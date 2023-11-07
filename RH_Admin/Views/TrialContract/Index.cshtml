@@ -1,0 +1,41 @@
+@model Embauche[]
+<div class="col-lg-12 grid-margin stretch-card">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Entrees pour un contrat d' essai</h4>
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Date d' embauche</th>
+              <th>Salarie</th>
+              <th>Telephone</th>
+              <th>Email</th>
+              <th>Adresse</th>
+              <th>&nbsp;</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (int i = 0; i < Model.Length; i++)
+            {
+              <tr>
+                <td>@Model[i].DateEmbauche</td>
+                <td>@Model[i].Nom @Model[i].Prenom</td>
+                <td>@Model[i].Telephone</td>
+                <td>@Model[i].Email</td>
+                <td>@Model[i].Adresse</td>
+                <td>
+                  <a
+                    href="@Url.Action("Form", "TrialContract", new { idEmbauche = @Model[i].Id})"
+                    ><i class="fas fa-angle-right"></i
+                  ></a>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,162 @@
+@{
+    Embauche e = ViewBag.embauche;
+    Salary s = ViewBag.salaire;
+    Company c = ViewBag.entreprise;
+    BddTitre[] a = ViewBag.avantages;
+}
+<div class="col-12 grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Contrat d' essai</h4>
+            <form class="form-sample" method="post" action="@Url.Action("Create", "TrialContract")">
+            <p class="card-description">
+                Informations personnelles
+            </p>
+            <div class="row">
+                <input type="hidden" name="idembauche" value="@e.Id">
+                <div class="col-md-6">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Nom</label>
+                    <div class="col-sm-9">
+                    <input type="text" class="form-control" value="@e.Nom"/>
+                    </div>
+                </div>
+                </div>
+                <div class="col-md-6">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Prenom</label>
+                    <div class="col-sm-9">
+                    <input type="text" class="form-control" value="@e.Prenom"/>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Telephone</label>
+                    <div class="col-sm-9">
+                    <input type="text" class="form-control" value="@e.Telephone"/>
+                    </div>
+                </div>
+                </div>
+                <div class="col-md-6">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Email</label>
+                    <div class="col-sm-9">
+                    <input type="text" class="form-control" value="@e.Email"/>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Adresse</label>
+                    <div class="col-sm-9">
+                    <input type="text" class="form-control" value="@e.Adresse"/>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <p class="card-description">
+                Contrat
+            </p>
+            <div class="row">
+                <div class="col-md-6">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Type de contrat</label>
+                    <div class="col-sm-9">
+                    <input type="text" class="form-control" value="@e.Contrat.Libelle"/>
+                    </div>
+                </div>
+                </div>
+                <div class="col-md-6">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Temps de travail hebdomadaire (h)</label>
+                    <div class="col-sm-9">
+                    <input type="number" name="tempsTravail" class="form-control" />
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Date de debut de contrat</label>
+                    <div class="col-sm-9">
+                    <input type="datetime-local" name="dateDebutContrat" class="form-control" />
+                    </div>
+                </div>
+                </div>
+                <div class="col-md-6">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Duree du periode d' essai en jours</label>
+                    <div class="col-sm-9">
+                    <input type="number" name="dureeEssai" class="form-control" />
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Jours travailles par semaine</label>
+                    <div class="col-sm-9">
+                    <input type="number" name="joursTravailles" class="form-control" />
+                    </div>
+                </div>
+                </div>
+                <div class="col-md-6">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Avantage en nature</label>
+                    <div class="col-sm-9">
+                    <div class="form-group">
+                        @foreach (var item in a)
+                        {
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                <input type="checkbox" name="avantage" value="@item.Id" class="form-check-input">
+                                @item.Libelle
+                                </label>
+                            </div>
+                        }
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Intitule de poste</label>
+                    <div class="col-sm-9">
+                    <input type="text" class="form-control" value="@e.Poste.Libelle"/>
+                    </div>
+                </div>
+                </div>
+                <div class="col-md-6">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Lieu de travail</label>
+                    <div class="col-sm-9">
+                    <input type="text" name="lieuTravail" class="form-control" value="@c.Nom"/>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Salaire brut mensuel</label>
+                    <div class="col-sm-9">
+                    <input type="number" class="form-control" value="@s.ValeurBrute"/>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary mr-2">Creer contrat</button>
+            </form>
+        </div>
+    </div>
+</div>
+

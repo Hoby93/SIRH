@@ -1,1 +1,54 @@
-@ViewBag.note
+@{
+    ViewData["Page"] = "Annonce";
+    ViewData["Title"] = "Resultat Test";
+}
+
+<div class="container">
+  <div class="page-banner">
+    <div class="row justify-content-center align-items-center h-100">
+      <div class="col-md-6 wrap">
+        <nav aria-label="Breadcrumb">
+          <ul class="breadcrumb justify-content-center py-0 bg-transparent">
+            <li class="breadcrumb-item"><a asp-area="" asp-controller="Home" asp-action="Index">Annonce</a></li>
+            <li class="breadcrumb-item"><a asp-area="" asp-controller="Home" asp-action="Index">Postule</a></li>
+            <li class="breadcrumb-item active">Test</li>
+          </ul>
+        </nav>
+        <h1 class="text-center">Resultat Test</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="corps" class="page-section d-none">
+    <div class="container">
+        <div class="text-center wow fadeInUp">
+            <div class="subhead">Votre Score</div>
+            <div class="divider mx-auto"></div>
+            <h2 class="title-section">
+                Vous avez obtenu <span class="text-primary">@ViewBag.note</span> Points
+            </h2>
+            <br/> 
+            <p class="text-lg text-grey mb-5">[Nous vous tiendrons au courant du resultat sur votre candidature]</p>
+        </div>
+    </div> <!-- .container -->
+</div> <!-- .page-section -->
+
+<div class="container ctn-sary text-center" id="chargement">
+    <img src="~/img/load.gif">
+    <p>En cours de traitement,patientez</p>
+</div>
+
+<script>
+    var sary = document.getElementById("chargement");
+    var corps = document.getElementById("corps");
+
+    document.addEventListener("DOMContentLoaded", () => {
+        var millisecondsToWait = 2000;
+        setTimeout(function() {
+            sary.classList.add("d-none");
+            corps.classList.remove("d-none");
+        }, millisecondsToWait);
+    });
+</script>
+

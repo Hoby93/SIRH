@@ -88,3 +88,20 @@
 .scroll-container::-webkit-scrollbar-track:vertical {
     background-color: transparent;
 }
+
+.br-50 {
+    border-radius: 50%;
+}
+
+.b-none {
+    border: none;
+}
+
+#profil {
+    transition: all 5s ease-in-out;
+    /* transform: translateX(20%); */
+}
+
+#critere {
+    transition: all 5s ease-in-out;
+}

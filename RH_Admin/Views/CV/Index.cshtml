@@ -1,0 +1,39 @@
+@model Candidate[] // Remplacez Postulant par le nom de votre modèle de données pour les postulants
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liste des postulants pour une offre d'emploi</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Liste des postulants pour une offre d'emploi</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Email</th>
+                    <th>Téléphone</th>
+                    <th>CV</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var postulant in Model)
+                {
+                    <tr>
+                        <td>@postulant.Nom</td>
+                        <td>@postulant.Prenom</td>
+                        <td>@postulant.Email</td>
+                        <td>@postulant.Telephone</td>
+                        <td>
+                            <a href="@Url.Page("CVDetails", new { id = postulant.Id })">Voir le CV</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

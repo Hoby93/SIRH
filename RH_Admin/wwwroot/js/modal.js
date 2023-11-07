@@ -13,3 +13,6 @@ function hidde(modalId) {
     modal.style.display = "none";
     primary.style.opacity = 1;
 }
+
+
+// -------------------------------------------------------------

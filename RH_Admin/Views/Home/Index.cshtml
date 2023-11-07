@@ -1,8 +1,76 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Accueil";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="row">
+    <div class="col-md-12 grid-margin">
+        <div class="row">
+            <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+                <h3 class="font-weight-bold">Bienvenue @ViewBag.Username!</h3>
+                <h6 class="font-weight-normal mb-0">Decouvrez notre systeme informatique, pour la <span class="text-primary">gestion de ressource humaine</span></h6>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card tale-bg">
+        <div class="card-people mt-auto">
+            <img src="images/dashboard/people.svg" alt="people">
+            <div class="weather-info">
+            <div class="d-flex">
+                <div>
+                <h2 class="mb-0 font-weight-normal"></i>101</h2>
+                </div>
+                <div class="ml-2">
+                <h4 class="location font-weight-normal">Antananarivo</h4>
+                <h6 class="font-weight-normal">Madagascar</h6>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="col-md-6 grid-margin transparent">
+        <div class="row">
+            <div class="col-md-6 mb-4 stretch-card transparent">
+                <div class="card card-tale">
+                <div class="card-body">
+                    <p class="mb-4">Nombre d'employe</p>
+                    <p class="fs-30 mb-2">00540</p>
+                    <p>98.00% (Malagasy)</p>
+                </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4 stretch-card transparent">
+                <div class="card card-dark-blue">
+                <div class="card-body">
+                    <p class="mb-4">Nombre de service</p>
+                    <p class="fs-30 mb-2">00005</p>
+                    <p>99.00% (Actif)</p>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
+                <div class="card card-light-blue">
+                <div class="card-body">
+                    <p class="mb-4">Employes en congee</p>
+                    <p class="fs-30 mb-2">00012</p>
+                    <p>6.00% (Tous)</p>
+                </div>
+                </div>
+            </div>
+            <div class="col-md-6 stretch-card transparent">
+                <div class="card card-light-danger">
+                <div class="card-body">
+                    <p class="mb-4">Conditions generales</p>
+                    <p class="fs-30 mb-2">1.98</p>
+                    <p>Taux moyen</p>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

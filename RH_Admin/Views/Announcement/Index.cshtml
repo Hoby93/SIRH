@@ -1,0 +1,46 @@
+<style>
+  /* Styles pour le formulaire de la table "culture" */
+  .form-container-quai {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .form-container-quai label {
+    font-weight: bold;
+  }
+
+  .form-container-quai input[type="text"],
+  .form-container-quai input[type="number"],
+  .form-container-quai input[type="datetime-local"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  .form-container-quai .btn-primary {
+    width: 100%;
+    padding: 10px;
+  }
+</style>
+
+<div class="form-container-quai">
+  <form action="@Url.Action("Create", "Announcement")" method="POST">
+    @if (ViewBag.message is not null)
+	{
+		<span style="color: red;">@ViewBag.message</span>
+	}
+    <label for="id_besoin">Besoin :</label>
+    <input type="number" id="id_besoin" name="id_besoin" required>
+
+    <label for="date">Date de creation :</label>
+    <input type="datetime-local" id="date" name="date">
+
+    <button type="submit" class="btn btn-primary">Creer</button>
+  </form>
+</div>

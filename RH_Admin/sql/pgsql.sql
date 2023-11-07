@@ -1,32 +1,52 @@
 /* 29-09-2023 */
 
-create table services(
+create table entreprise
+(
+    id SERIAL PRIMARY KEY,
+    nom VARCHAR(100),
+    activite VARCHAR(100)
+);
+
+create table services
+(
     id serial primary key,
     libelle varchar(80)
 );
 
+create table niveau(
+    id serial primary key,
+    libelle varchar(80)
+);
+
+INSERT INTO niveau VALUES(default, null);
+
 create table poste(
     id serial primary key,
     idservice int,
+    idniveau int,
     libelle varchar(80),
     description varchar(160),
-    foreign key(idservice) references services(id)
+    foreign key(idservice) references services(id),
+    foreign key(idniveau) references niveau(id)
 );
 
 -- BESOIN ---------------------------------------------------------------------------------------------------
 
-create table critere(
+create table critere
+(
     id serial primary key,
     libelle varchar(80),
     nature int
 );
 
-create table typecontrat(
+create table typecontrat
+(
     id serial primary key,
     libelle varchar(80)
 );
 
-create table critere_option(
+create table critere_option
+(
     id serial primary key,
     idcritere int,
     libelle varchar(80),
@@ -39,11 +59,27 @@ create table besoin(
     idtypecontrat int,
     libelle varchar(120),
     volumehoraire real,
+    noteadmis int default 10,
+    datedebut date default now(),
+    datefin date default null,
+    agemin int default 18,
+    agemax int default 65,
     foreign key(idposte) references poste(id),
     foreign key(idtypecontrat) references typecontrat(id)
 );
 
-create table besoin_critere(
+CREATE TABLE annonce
+(
+    id SERIAL PRIMARY KEY,
+    idBesoin INT,
+    dateEnvoi TIMESTAMP,
+    idEntreprise INT,
+    FOREIGN KEY(idBesoin) REFERENCES besoin(id),
+    FOREIGN KEY(idEntreprise) REFERENCES entreprise(id)
+);
+
+create table besoin_critere
+(
     id serial primary key,
     idbesoin int,
     idcritere int,
@@ -52,7 +88,8 @@ create table besoin_critere(
     foreign key(idcritere) references critere(id)
 );
 
-create table critere_option_note(
+create table critere_option_note
+(
     id serial primary key,
     idbesoincritere int default null,
     idcritereoption int,
@@ -61,16 +98,28 @@ create table critere_option_note(
     foreign key(idcritereoption) references critere_option(id)
 );
 
-create table candidat(
+create table candidat
+(
     id serial primary key,
     nom varchar(80),
     prenom varchar(120),
     telephone varchar(10),
     email varchar(120),
-    adresse varchar(80)
+    adresse varchar(80), 
+    genre int,
+    dateNaissance timestamp
 );
 
-create table candidat_critere(
+create table besoin_candidat(
+    id serial primary key,
+    idcandidat int,
+    idbesoin int,
+    foreign key(idcandidat) references candidat(id),
+    foreign key(idbesoin) references besoin(id)
+);
+
+create table candidat_critere
+(
     id serial primary key,
     idcandidat int,
     idcritereoption int,
@@ -78,7 +127,8 @@ create table candidat_critere(
 );
 
 
-create table question(
+create table question
+(
     id serial primary key,
     idposte int,
     question varchar(120),
@@ -86,42 +136,24 @@ create table question(
     foreign key(idposte) references poste(id)
 );
 
-create table proposition(
+create table proposition
+(
     id serial primary key,
     idquestion int,
     libelle varchar(120),
-    etat int, -- Vrai(1) ou Faux(0)
+    etat int,
+    -- Vrai(1) ou Faux(0)
     foreign key(idquestion) references question(id)
 );
 
-create table candidat_reponse(
+create table candidat_reponse
+(
     id serial primary key,
+    idbesoincandidat int,
     idproposition int,
+    foreign key(idbesoincandidat) references besoin_candidat(id),
     foreign key(idproposition) references proposition(id)
 );
-
-create table question(
-    id serial primary key,
-    idposte int,
-    question varchar(120),
-    points int,
-    foreign key(idposte) references poste(id)
-);
-
-create table proposition(
-    id serial primary key,
-    idquestion int,
-    libelle varchar(120),
-    etat int, -- Vrai(1) ou Faux(0)
-    foreign key(idquestion) references question(id)
-);
-
-create table candidat_reponse(
-    id serial primary key,
-    idproposition int,
-    foreign key(idproposition) references proposition(id)
-);
-
 
 /* NB:
         - La nature critere: drop_down_list(0)/check_box(1)/radio(2)
@@ -130,86 +162,96 @@ create table candidat_reponse(
 
 -- TEST ---------------------------------------------------------------------------------------------------
 
--- TYPE CONTRAT
-INSERT INTO typecontrat
-VALUES(default, 'Contrat de travail a duree indeterminee');
-INSERT INTO typecontrat
-VALUES(default, 'Contrat de travail a duree determinee');
-INSERT INTO typecontrat
-VALUES(default, 'Contrat de travail a duree determinee a objet defini');
-INSERT INTO typecontrat
-VALUES(default, 'Contrat de travail a duree determinee Senior');
-INSERT INTO typecontrat
-VALUES(default, 'CDI interimaire');
-INSERT INTO typecontrat
-VALUES(default, 'Contrat de travail a duree determinee d'' usage');
-INSERT INTO typecontrat
-VALUES(default, 'Travail a temps partiel');
+create table embauche(
+    id serial primary key,
+    idcandidat int,
+    idposte int,
+    idbesoincandidat int,
+    idtypecontrat int,
+    dateembauche date,
+    numeroMatricule VARCHAR(50),
+    etat int,
+    foreign key(idcandidat) references candidat(id),
+    foreign key(idposte) references poste(id),
+    foreign key(idbesoincandidat) references besoin_candidat(id),
+    foreign key(idtypecontrat) references typecontrat(id)
+);
 
--- CRITERE
-insert into critere values(default, 'Diplome', 0);
-insert into critere values(default, 'Experience', 0);
-insert into critere values(default, 'Sexe', 2);
-insert into critere values(default, 'Nationalite', 2);
-insert into critere values(default, 'Situation matrimoniale', 2);
-insert into critere values(default, 'Langue', 1);
+create table salaire(
+    id serial primary key,
+    idembauche int,
+    valeurbrute real,
+    valeurnet real,
+    datedebut date,
+    datefin date,
+    foreign key(idembauche) references embauche(id)
+);
 
--- CRITERE OPTION
-insert into critere_option values(default, 1, 'CEPE');
-insert into critere_option values(default, 1, 'BEPC');
-insert into critere_option values(default, 1, 'BACC');
-insert into critere_option values(default, 1, 'Licence');
-insert into critere_option values(default, 1, 'Maitrise');
-insert into critere_option values(default, 1, 'Doctorat');
+CREATE TABLE typeConge(
+    id SERIAL PRIMARY KEY,
+    nom VARCHAR(255),
+    estDeductible INTEGER -- 0 non ,1 oui
+);
 
-insert into critere_option values(default, 2, 'Aucun');
-insert into critere_option values(default, 2, 'Moins de 2 ans');
-insert into critere_option values(default, 2, 'Moins de 5 ans');
-insert into critere_option values(default, 2, 'Moins de 10 ans');
-insert into critere_option values(default, 2, 'Plus de 10 ans');
+create table historique_fait(
+    id serial primary key,
+    idembauche int,
+    fait int, -- Avertissement(-1) & Renvoye (-3) & ...
+    datefait date,
+    foreign key(idembauche) references embauche(id)
+);
 
-insert into critere_option values(default, 3, 'Homme');
-insert into critere_option values(default, 3, 'Femme');
+CREATE TABLE demandeConge(
+    id SERIAL PRIMARY KEY,
+    idembauche INTEGER,
+    idtypeconge INTEGER,
+    debutconge TIMESTAMP,
+    finconge TIMESTAMP,
+    etat INTEGER DEFAULT 0, -- -2 refus;0 en attente;2 accepter
+    FOREIGN KEY(idtypeconge) REFERENCES typeConge(id),
+    FOREIGN KEY(idembauche) REFERENCES embauche(id)
+);
 
-insert into critere_option values(default, 4, 'Malagasy');
-insert into critere_option values(default, 4, 'Etranger');
+CREATE TABLE reelConge(
+    id SERIAL PRIMARY KEY,
+    idembauche INTEGER,
+    idtypeconge INTEGER,
+    debutconge TIMESTAMP,
+    finconge TIMESTAMP, -- null si pas encore terminer
+    FOREIGN KEY(idtypeconge) REFERENCES typeConge(id),
+    FOREIGN KEY(idembauche) REFERENCES embauche(id)
+);
 
-insert into critere_option values(default, 5, 'Celibataire');
-insert into critere_option values(default, 5, 'Mariee');
-insert into critere_option values(default, 5, 'Veuf');
+CREATE TABLE avantage(
+    id SERIAL PRIMARY KEY,
+    libelle VARCHAR(50)
+);
 
-insert into critere_option values(default, 6, 'Anglais');
-insert into critere_option values(default, 6, 'Malagasy');
-insert into critere_option values(default, 6, 'Francais');
-insert into critere_option values(default, 6, 'Autre');
+CREATE TABLE contratEssai(
+    id SERIAL PRIMARY KEY,
+    idEmbauche INT,
+    tempsTravail REAL,
+    dateDebutContrat TIMESTAMP,
+    dureeEssai REAL,
+    joursTravailles REAL,
+    FOREIGN KEY(idEmbauche) REFERENCES embauche(id)
+);
 
--- CRITERE OPTION NOTE
-insert into critere_option_note values(default, default, 1, 5);
-insert into critere_option_note values(default, default, 2, 8);
-insert into critere_option_note values(default, default, 3, 10);
-insert into critere_option_note values(default, default, 4, 12);
-insert into critere_option_note values(default, default, 5, 15);
-insert into critere_option_note values(default, default, 6, 19);
+CREATE TABLE contratEssaiAvantage(
+    id SERIAL PRIMARY KEY,
+    idContratEssai INT,
+    idAvantage INT,
+    FOREIGN KEY(idContratEssai) REFERENCES contratEssai(id),
+    FOREIGN KEY(idAvantage) REFERENCES avantage(id)
+);
 
-insert into critere_option_note values(default, default, 7, 5);
-insert into critere_option_note values(default, default, 8, 8);
-insert into critere_option_note values(default, default, 9, 12);
-insert into critere_option_note values(default, default, 10, 15);
-insert into critere_option_note values(default, default, 11, 19);
-
-insert into critere_option_note values(default, default, 12, 20);
-insert into critere_option_note values(default, default, 13, 20);
-
-insert into critere_option_note values(default, default, 14, 20);
-insert into critere_option_note values(default, default, 15, 20);
-
-insert into critere_option_note values(default, default, 16, 20);
-insert into critere_option_note values(default, default, 17, 20);
-insert into critere_option_note values(default, default, 18, 20);
-
-insert into critere_option_note values(default, default, 19, 5);
-insert into critere_option_note values(default, default, 10, 10);
-insert into critere_option_note values(default, default, 21, 3);
-insert into critere_option_note values(default, default, 22, 2);
+create table noteCandidat(
+    id SERIAL PRIMARY KEY,
+    idcandidat INTEGER,
+    idbesoin INTEGER,
+    note REAL NOT NULL,
+    FOREIGN KEY(idcandidat) REFERENCES candidat(id),
+    FOREIGN KEY(idbesoin) REFERENCES besoin(id)
+);
 
 

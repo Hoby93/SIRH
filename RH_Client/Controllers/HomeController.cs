@@ -36,6 +36,13 @@ public class HomeController : Controller
         annonce.Id = idannonce;
         annonce = annonce.Find(null);
         ViewBag.annonce = annonce;
+
+        string errorMessage = TempData["ErrorMessage"] as string;
+        if (!string.IsNullOrEmpty(errorMessage))
+        {
+            ViewBag.ErrorMessage = errorMessage;
+        }
+
         return View("InfoAnnonce");
     }
 

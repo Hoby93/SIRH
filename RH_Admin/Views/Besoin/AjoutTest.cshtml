@@ -17,52 +17,112 @@
         </div>
     </div>
     <div class="row col-md-12">
-        <div class="col-md-12 grid-margin stretch-card">
-            <div class="card box-shadow">
-                <div class="card-body">
-                    <!-- Modal Header -->
-                    <div class="modal-header b-0">
-                        <p class="card-title">Question 01</p>
-                        <button class="btn p-0" onclick="javascript:hidde('ajout')">
-                            <i class="mdi mdi-close"></i>
-                        </button>
-                    </div>
-                    <p class="ml-3">
-                        <input type="text" class="font-weight-500" style="border: none;" placeholder="Entrez votre question" name="libelle">
-                    </p>
-                    <div class="card-body">
-                        <h4 class="card-title">Propositions</h4>
-                        <div class="list-wrapper pt-2" style="overflow: unset;">
-                            <ul class="d-flex flex-column-reverse todo-list todo-list-custom">
-                                <li>
-                                    <div class="form-check">
-                                        <label class="form-check-label">
-                                            <input class="form-check-input" type="checkbox"/>
-                                        </label>
-                                    </div>
-                                    <input type="text" class="b-0 w-100"  value="Exemple de proposition" name="libelle"/>
-                                    <i class="remove ti-close"></i>
-                                </li>
-                            </ul>
+        <form action="@Url.Action("Ajout", "Test")" method="post" style="width: 100%;">
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card box-shadow">
+                    <div class="card-body questionReponse">
+                        <!-- Modal Header -->
+                        <div class="modal-header b-0">
+                            <p class="card-title">Question 01</p>
+                            <button class="btn p-0" onclick="javascript:hidde('ajout')">
+                                <i class="mdi mdi-close"></i>
+                            </button>
                         </div>
-                        <div class="add-items d-flex mb-0 mt-2">
-                            <input type="text" class="form-control todo-list-input"  placeholder="Entrez votre proposition">
-                            <button class="btn btn-icon text-primary bg-transparent"><i class="icon-circle-plus"></i></button>
+                        <p class="ml-3">
+                            <input type="text" class="form-control" style="border: none;" placeholder="Entrez votre question" name="libelle">
+                        </p>
+                        <p class="ml-3">
+                            <input type="number" class="form-control" style="border: none;" name="point" step="0.01" placeholder="Point">
+                        </p>
+                        <div class="card-body">
+                            <h4 class="card-title">Propositions</h4>
+                            <div class="list-wrapper pt-2" style="overflow: unset;">
+                                <ul class="d-flex flex-column-reverse todo-list todo-list-custom">
+                                    <li class="proposition">
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input type="hidden" name="verite" value="0"/>
+                                                <input class="form-check-input" type="checkbox" name="verite" value="1"/>
+                                                <i class="input-helper"></i>
+                                            </label>
+                                        </div>
+                                        <input type="text" class="b-0 w-100"  value="Exemple de proposition" name="reponses"/>
+                                        <i class="remove ti-close" onclick="removeProposal(this)"></i>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="add-items d-flex mb-0 mt-2">
+                                <input type="text" class="form-control todo-list-input"  placeholder="Entrez votre proposition">
+                                <a class="btn btn-icon text-primary bg-transparent" onclick="addProposal(this)"><i class="icon-circle-plus"></i></a>
+                            </div>
                         </div>
+                        <input type="hidden" name="nombrePropositions" id="nombrePropositions" value="1"/>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-10 mb-3 mt-2">
-            <button class="btn btn-primary" onclick="javascript:display('ajout')">
-                <i class="ti-plus btn-icon-prepend"></i>
-            </button>
-        </div>
-        <div class="mb-3 mt-2">
-            <button class="btn btn-primary" onclick="javascript:display('ajout')">
-                <i class="ti-save btn-icon-prepend"></i>
-                <span class="ml-1">Enregistrer</span>
-            </button>
-        </div>
+            <div class="col-10 mb-3 mt-2">
+                <a class="btn btn-primary" onclick="addQuestionReponse()" id="ajoutQuestionReponse">
+                    <i class="ti-plus btn-icon-prepend"></i>
+                </a>
+            </div>
+            <div class="mb-3 mt-2">
+                <button class="btn btn-primary" type="submit">
+                    <i class="ti-save btn-icon-prepend"></i>
+                    Enregistrer
+                </button>
+            </div>
+        </form>
     </div>
 </div>
+<script>
+    var iniQuestionReponse = document.getElementsByClassName("questionReponse")[0].parentElement.parentElement.cloneNode(true);
+    window.addEventListener('load', (event) => {
+        //console.log('load');
+        var boutons = document.getElementsByTagName("button");
+        for (let i = 0; i < boutons.length; i++) {
+            //console.log(boutons[i]);
+            boutons[i].addEventListener('click', (event) => {
+                if (event.target.type != 'submit'){
+                    event.preventDefault();
+                }
+            });
+        }
+    });
+    function addProposal(button){
+        console.log(button);
+        var questionReponse = button.parentElement.parentElement.parentElement;
+        var propositions = questionReponse.getElementsByClassName("proposition");
+        var proposition = propositions[0];
+        //console.log(proposition)
+        var nouvelleProposition = proposition.cloneNode(true);
+        console.log(nouvelleProposition);
+        var propositionAjouter = questionReponse.lastElementChild.previousElementSibling.lastElementChild.firstElementChild.value;
+        //console.log(propositionAjouter);
+        nouvelleProposition.getElementsByTagName("input")[2].value = propositionAjouter;
+        nouvelleProposition.querySelector('input[type="checkbox"]').value = 1;
+        //nouvelleProposition.querySelector(".verite").value = ;
+        proposition.insertAdjacentElement('beforebegin', nouvelleProposition);
+        //console.log(questionReponse);
+        questionReponse.querySelector("#nombrePropositions").value = parseInt(questionReponse.querySelector("#nombrePropositions").value) + 1;
+    }
+
+    function removeProposal(icon){
+        let currentNode = icon;
+        let i = 0;
+        while (i < 5){
+            currentNode = currentNode.parentElement;
+            i++;
+        }
+        var questionReponse = currentNode;
+        //console.log(questionReponse);
+        questionReponse.querySelector("#nombrePropositions").value = parseInt(questionReponse.querySelector("#nombrePropositions").value) - 1;
+    }
+
+    function addQuestionReponse(){
+        var parent = document.getElementById("ajoutQuestionReponse").parentElement;
+        var newQuestionReponse =  iniQuestionReponse.cloneNode(true);
+        newQuestionReponse.firstElementChild.firstElementChild.firstElementChild.firstElementChild.textContent = 'Question ' + (document.getElementsByClassName("questionReponse").length + 1);   
+        console.log(newQuestionReponse);
+        parent.insertAdjacentElement('beforebegin', newQuestionReponse);
+    }
+</script>

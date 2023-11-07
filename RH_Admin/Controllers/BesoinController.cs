@@ -49,15 +49,17 @@ public class BesoinController : Controller
 
         int x = 0;
         int i = 0;
-        foreach (Critere critere in criteres) 
+        foreach (Critere critere in criteres)
         {
-            if(x >= coefficients.Length || i >= notes.Length) { break; }
-            if(critere.Id == idcriteres[x]) {
+            if (x >= coefficients.Length || i >= notes.Length) { break; }
+            if (critere.Id == idcriteres[x])
+            {
                 BesoinCritere besoinCritere = new BesoinCritere(-1, idbesoin, critere.Id, coefficients[x]);
                 besoinCritere.insert(null);
 
                 // Console.WriteLine($"-----------   {critere.Libelle} ({coefficients[x]})   -----------");
-                if(isset[x] == 1) {
+                if (isset[x] == 1)
+                {
                     int idbesoincritere = besoin.getInteger($"select id from besoin_critere where idbesoin = {idbesoin} and idcritere = {critere.Id}", null);
                     foreach (BddTitre option in critere.Options())
                     {
@@ -65,16 +67,20 @@ public class BesoinController : Controller
                         optionNote.insert(null);
                         i++;
                     }
-                } else {
+                }
+                else
+                {
                     i += critere.Options().Length;
                 }
                 x++;
-            } else {
+            }
+            else
+            {
                 i += critere.Options().Length;
             }
         }
 
-        return View("Ajout");
+        return RedirectToAction("Create", "Announcement", new { id_besoin = idbesoin, date = DateTime.Now });
     }
 
     public IActionResult InsertTest()

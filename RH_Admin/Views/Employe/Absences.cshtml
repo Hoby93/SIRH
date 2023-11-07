@@ -1,0 +1,88 @@
+@{
+  Conge[] conges = ViewBag.conges;
+  Boolean isEmpty = true;
+}
+<div class="row">
+  <div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <p class="card-title">Journal des conges</p>
+        <div class="row">
+          <div class="col-12">
+              <div class="mb-3 mt-5">
+                <ul class="nav">
+                    <li>
+                        <a class="btn btn-primary" style="width: 150px;" data-toggle="collapse" href="#recherche-employe" aria-expanded="false" aria-controls="form-elements">
+                            <span class="menu-title">Recherche</span>
+                            <sub><i class="mdi mdi-chevron-down menu-icon"></i></sub>
+                        </a>
+                        <div class="collapse mt-2" id="recherche-employe">
+                            <table class="inputs">
+                              <tbody>
+                                <tr>
+                                  <td>Date minimum:</td>
+                                  <td><input type="date" id="min" name="min" class="form-control"></td>
+                                </tr>
+                                <tr>
+                                  <td>Date maximum:</td>
+                                  <td><input type="date" id="max" name="max" class="form-control"></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="table-responsive">
+              <table
+                id="absences"
+                class="display expandable-table"
+                style="width: 100%"
+              >
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Salarie</th>
+                    <th>Service</th>
+                    <th>Type de conges</th>
+                    <th>Periode du conge</th>
+                    <th>Duree</th>
+                    <th>Statut</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach (var item in conges)
+                  {
+                    <tr>
+                      <td>@item.DebutConge.ToString("yyyy-MM-dd")</td>
+                      <td>@item.Embauche.Nom @item.Embauche.Prenom</td>
+                      <td>@item.Embauche.Poste.Service.Libelle</td>
+                      <td>@item.TypeConge.Nom</td>
+                      <td>
+                        @item.DebutConge.ToShortDateString() -
+                        @item.FinConge.ToShortDateString()
+                      </td>
+                      <td>@item.GetDuree() jour</td>
+                      <td class="font-weight-medium">
+                        @Html.Raw(item.ShowStatus())
+                      </td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+
+              @if(isEmpty) {
+                <div class="text-center p-3 text-secondary">
+                  <em>Aucun element pour l'instant</em>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="~/js/absences.js"></script>
+
+

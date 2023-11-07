@@ -60,104 +60,69 @@ E:\S5\Mr Tovo\clientGRH\obj\Debug\net7.0\refint\clientGRH.dll
 E:\S5\Mr Tovo\clientGRH\obj\Debug\net7.0\clientGRH.pdb
 E:\S5\Mr Tovo\clientGRH\obj\Debug\net7.0\clientGRH.genruntimeconfig.cache
 E:\S5\Mr Tovo\clientGRH\obj\Debug\net7.0\ref\clientGRH.dll
-D:\S5\mr tovo\clientGRH\bin\Debug\net7.0\Npgsql.dll
-D:\S5\mr tovo\clientGRH\obj\Debug\net7.0\clientGRH.csproj.CopyComplete
-C:\Users\ONEF\Documents\.NET Projects\Back-Office\SIRH\RH_Client\bin\Debug\net7.0\appsettings.Development.json
-C:\Users\ONEF\Documents\.NET Projects\Back-Office\SIRH\RH_Client\bin\Debug\net7.0\appsettings.json
-C:\Users\ONEF\Documents\.NET Projects\Back-Office\SIRH\RH_Client\bin\Debug\net7.0\clientGRH.staticwebassets.runtime.json
-C:\Users\ONEF\Documents\.NET Projects\Back-Office\SIRH\RH_Client\bin\Debug\net7.0\clientGRH.exe
-C:\Users\ONEF\Documents\.NET Projects\Back-Office\SIRH\RH_Client\bin\Debug\net7.0\clientGRH.deps.json
-C:\Users\ONEF\Documents\.NET Projects\Back-Office\SIRH\RH_Client\bin\Debug\net7.0\clientGRH.runtimeconfig.json
-C:\Users\ONEF\Documents\.NET Projects\Back-Office\SIRH\RH_Client\bin\Debug\net7.0\clientGRH.dll
-C:\Users\ONEF\Documents\.NET Projects\Back-Office\SIRH\RH_Client\bin\Debug\net7.0\clientGRH.pdb
-C:\Users\ONEF\Documents\.NET Projects\Back-Office\SIRH\RH_Client\bin\Debug\net7.0\Npgsql.dll
-C:\Users\ONEF\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\clientGRH.csproj.AssemblyReference.cache
-C:\Users\ONEF\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\clientGRH.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\ONEF\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\clientGRH.AssemblyInfoInputs.cache
-C:\Users\ONEF\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\clientGRH.AssemblyInfo.cs
-C:\Users\ONEF\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\clientGRH.csproj.CoreCompileInputs.cache
-C:\Users\ONEF\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\clientGRH.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\ONEF\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\clientGRH.RazorAssemblyInfo.cache
-C:\Users\ONEF\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\clientGRH.RazorAssemblyInfo.cs
-C:\Users\ONEF\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\staticwebassets\msbuild.clientGRH.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\ONEF\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\staticwebassets\msbuild.build.clientGRH.props
-C:\Users\ONEF\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.clientGRH.props
-C:\Users\ONEF\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.clientGRH.props
-C:\Users\ONEF\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\staticwebassets.pack.json
-C:\Users\ONEF\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\staticwebassets.build.json
-C:\Users\ONEF\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\staticwebassets.development.json
-C:\Users\ONEF\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
-C:\Users\ONEF\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\scopedcss\bundle\clientGRH.styles.css
-C:\Users\ONEF\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\scopedcss\projectbundle\clientGRH.bundle.scp.css
-C:\Users\ONEF\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\clientGRH.csproj.CopyComplete
-C:\Users\ONEF\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\clientGRH.dll
-C:\Users\ONEF\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\refint\clientGRH.dll
-C:\Users\ONEF\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\clientGRH.pdb
-C:\Users\ONEF\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\clientGRH.genruntimeconfig.cache
-C:\Users\ONEF\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\ref\clientGRH.dll
-C:\Users\ITU\Documents\.NET Projects\Back-Office\SIRH\RH_Client\bin\Debug\net7.0\appsettings.Development.json
-C:\Users\ITU\Documents\.NET Projects\Back-Office\SIRH\RH_Client\bin\Debug\net7.0\appsettings.json
-C:\Users\ITU\Documents\.NET Projects\Back-Office\SIRH\RH_Client\bin\Debug\net7.0\clientGRH.staticwebassets.runtime.json
-C:\Users\ITU\Documents\.NET Projects\Back-Office\SIRH\RH_Client\bin\Debug\net7.0\clientGRH.exe
-C:\Users\ITU\Documents\.NET Projects\Back-Office\SIRH\RH_Client\bin\Debug\net7.0\clientGRH.deps.json
-C:\Users\ITU\Documents\.NET Projects\Back-Office\SIRH\RH_Client\bin\Debug\net7.0\clientGRH.runtimeconfig.json
-C:\Users\ITU\Documents\.NET Projects\Back-Office\SIRH\RH_Client\bin\Debug\net7.0\clientGRH.dll
-C:\Users\ITU\Documents\.NET Projects\Back-Office\SIRH\RH_Client\bin\Debug\net7.0\clientGRH.pdb
-C:\Users\ITU\Documents\.NET Projects\Back-Office\SIRH\RH_Client\bin\Debug\net7.0\Npgsql.dll
-C:\Users\ITU\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\clientGRH.csproj.AssemblyReference.cache
-C:\Users\ITU\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\clientGRH.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\ITU\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\clientGRH.AssemblyInfoInputs.cache
-C:\Users\ITU\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\clientGRH.AssemblyInfo.cs
-C:\Users\ITU\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\clientGRH.csproj.CoreCompileInputs.cache
-C:\Users\ITU\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\clientGRH.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\ITU\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\clientGRH.RazorAssemblyInfo.cache
-C:\Users\ITU\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\clientGRH.RazorAssemblyInfo.cs
-C:\Users\ITU\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\staticwebassets\msbuild.clientGRH.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\ITU\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\staticwebassets\msbuild.build.clientGRH.props
-C:\Users\ITU\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.clientGRH.props
-C:\Users\ITU\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.clientGRH.props
-C:\Users\ITU\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\staticwebassets.pack.json
-C:\Users\ITU\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\staticwebassets.build.json
-C:\Users\ITU\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\staticwebassets.development.json
-C:\Users\ITU\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
-C:\Users\ITU\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\scopedcss\bundle\clientGRH.styles.css
-C:\Users\ITU\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\scopedcss\projectbundle\clientGRH.bundle.scp.css
-C:\Users\ITU\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\clientGRH.csproj.CopyComplete
-C:\Users\ITU\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\clientGRH.dll
-C:\Users\ITU\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\refint\clientGRH.dll
-C:\Users\ITU\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\clientGRH.pdb
-C:\Users\ITU\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\clientGRH.genruntimeconfig.cache
-C:\Users\ITU\Documents\.NET Projects\Back-Office\SIRH\RH_Client\obj\Debug\net7.0\ref\clientGRH.dll
-D:\S5\mr tovo\RH_Client\bin\Debug\net7.0\appsettings.Development.json
-D:\S5\mr tovo\RH_Client\bin\Debug\net7.0\appsettings.json
-D:\S5\mr tovo\RH_Client\bin\Debug\net7.0\clientGRH.staticwebassets.runtime.json
-D:\S5\mr tovo\RH_Client\bin\Debug\net7.0\clientGRH.exe
-D:\S5\mr tovo\RH_Client\bin\Debug\net7.0\clientGRH.deps.json
-D:\S5\mr tovo\RH_Client\bin\Debug\net7.0\clientGRH.runtimeconfig.json
-D:\S5\mr tovo\RH_Client\bin\Debug\net7.0\clientGRH.dll
-D:\S5\mr tovo\RH_Client\bin\Debug\net7.0\clientGRH.pdb
-D:\S5\mr tovo\RH_Client\bin\Debug\net7.0\Npgsql.dll
-D:\S5\mr tovo\RH_Client\obj\Debug\net7.0\clientGRH.csproj.AssemblyReference.cache
-D:\S5\mr tovo\RH_Client\obj\Debug\net7.0\clientGRH.GeneratedMSBuildEditorConfig.editorconfig
-D:\S5\mr tovo\RH_Client\obj\Debug\net7.0\clientGRH.AssemblyInfoInputs.cache
-D:\S5\mr tovo\RH_Client\obj\Debug\net7.0\clientGRH.AssemblyInfo.cs
-D:\S5\mr tovo\RH_Client\obj\Debug\net7.0\clientGRH.csproj.CoreCompileInputs.cache
-D:\S5\mr tovo\RH_Client\obj\Debug\net7.0\clientGRH.MvcApplicationPartsAssemblyInfo.cache
-D:\S5\mr tovo\RH_Client\obj\Debug\net7.0\clientGRH.RazorAssemblyInfo.cache
-D:\S5\mr tovo\RH_Client\obj\Debug\net7.0\clientGRH.RazorAssemblyInfo.cs
-D:\S5\mr tovo\RH_Client\obj\Debug\net7.0\staticwebassets\msbuild.clientGRH.Microsoft.AspNetCore.StaticWebAssets.props
-D:\S5\mr tovo\RH_Client\obj\Debug\net7.0\staticwebassets\msbuild.build.clientGRH.props
-D:\S5\mr tovo\RH_Client\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.clientGRH.props
-D:\S5\mr tovo\RH_Client\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.clientGRH.props
-D:\S5\mr tovo\RH_Client\obj\Debug\net7.0\staticwebassets.pack.json
-D:\S5\mr tovo\RH_Client\obj\Debug\net7.0\staticwebassets.build.json
-D:\S5\mr tovo\RH_Client\obj\Debug\net7.0\staticwebassets.development.json
-D:\S5\mr tovo\RH_Client\obj\Debug\net7.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
-D:\S5\mr tovo\RH_Client\obj\Debug\net7.0\scopedcss\bundle\clientGRH.styles.css
-D:\S5\mr tovo\RH_Client\obj\Debug\net7.0\scopedcss\projectbundle\clientGRH.bundle.scp.css
-D:\S5\mr tovo\RH_Client\obj\Debug\net7.0\clientGRH.csproj.CopyComplete
-D:\S5\mr tovo\RH_Client\obj\Debug\net7.0\clientGRH.dll
-D:\S5\mr tovo\RH_Client\obj\Debug\net7.0\refint\clientGRH.dll
-D:\S5\mr tovo\RH_Client\obj\Debug\net7.0\clientGRH.pdb
-D:\S5\mr tovo\RH_Client\obj\Debug\net7.0\clientGRH.genruntimeconfig.cache
-D:\S5\mr tovo\RH_Client\obj\Debug\net7.0\ref\clientGRH.dll
+E:\Projet_Tovo\RH_Client\bin\Debug\net7.0\appsettings.Development.json
+E:\Projet_Tovo\RH_Client\bin\Debug\net7.0\appsettings.json
+E:\Projet_Tovo\RH_Client\bin\Debug\net7.0\clientGRH.staticwebassets.runtime.json
+E:\Projet_Tovo\RH_Client\bin\Debug\net7.0\clientGRH.exe
+E:\Projet_Tovo\RH_Client\bin\Debug\net7.0\clientGRH.deps.json
+E:\Projet_Tovo\RH_Client\bin\Debug\net7.0\clientGRH.runtimeconfig.json
+E:\Projet_Tovo\RH_Client\bin\Debug\net7.0\clientGRH.dll
+E:\Projet_Tovo\RH_Client\bin\Debug\net7.0\clientGRH.pdb
+E:\Projet_Tovo\RH_Client\obj\Debug\net7.0\clientGRH.csproj.AssemblyReference.cache
+E:\Projet_Tovo\RH_Client\obj\Debug\net7.0\clientGRH.GeneratedMSBuildEditorConfig.editorconfig
+E:\Projet_Tovo\RH_Client\obj\Debug\net7.0\clientGRH.AssemblyInfoInputs.cache
+E:\Projet_Tovo\RH_Client\obj\Debug\net7.0\clientGRH.AssemblyInfo.cs
+E:\Projet_Tovo\RH_Client\obj\Debug\net7.0\clientGRH.csproj.CoreCompileInputs.cache
+E:\Projet_Tovo\RH_Client\obj\Debug\net7.0\clientGRH.MvcApplicationPartsAssemblyInfo.cache
+E:\Projet_Tovo\RH_Client\obj\Debug\net7.0\clientGRH.RazorAssemblyInfo.cache
+E:\Projet_Tovo\RH_Client\obj\Debug\net7.0\clientGRH.RazorAssemblyInfo.cs
+E:\Projet_Tovo\RH_Client\obj\Debug\net7.0\staticwebassets\msbuild.clientGRH.Microsoft.AspNetCore.StaticWebAssets.props
+E:\Projet_Tovo\RH_Client\obj\Debug\net7.0\staticwebassets\msbuild.build.clientGRH.props
+E:\Projet_Tovo\RH_Client\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.clientGRH.props
+E:\Projet_Tovo\RH_Client\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.clientGRH.props
+E:\Projet_Tovo\RH_Client\obj\Debug\net7.0\staticwebassets.pack.json
+E:\Projet_Tovo\RH_Client\obj\Debug\net7.0\staticwebassets.build.json
+E:\Projet_Tovo\RH_Client\obj\Debug\net7.0\staticwebassets.development.json
+E:\Projet_Tovo\RH_Client\obj\Debug\net7.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+E:\Projet_Tovo\RH_Client\obj\Debug\net7.0\scopedcss\bundle\clientGRH.styles.css
+E:\Projet_Tovo\RH_Client\obj\Debug\net7.0\scopedcss\projectbundle\clientGRH.bundle.scp.css
+E:\Projet_Tovo\RH_Client\obj\Debug\net7.0\clientGRH.dll
+E:\Projet_Tovo\RH_Client\obj\Debug\net7.0\refint\clientGRH.dll
+E:\Projet_Tovo\RH_Client\obj\Debug\net7.0\clientGRH.pdb
+E:\Projet_Tovo\RH_Client\obj\Debug\net7.0\clientGRH.genruntimeconfig.cache
+E:\Projet_Tovo\RH_Client\obj\Debug\net7.0\ref\clientGRH.dll
+E:\Projet_Tovo\RH_Client\bin\Debug\net7.0\Npgsql.dll
+E:\Projet_Tovo\RH_Client\obj\Debug\net7.0\clientGRH.csproj.CopyComplete
+D:\Projet_Tovo\RH_Client\bin\Debug\net7.0\appsettings.Development.json
+D:\Projet_Tovo\RH_Client\bin\Debug\net7.0\appsettings.json
+D:\Projet_Tovo\RH_Client\bin\Debug\net7.0\clientGRH.staticwebassets.runtime.json
+D:\Projet_Tovo\RH_Client\bin\Debug\net7.0\clientGRH.exe
+D:\Projet_Tovo\RH_Client\bin\Debug\net7.0\clientGRH.deps.json
+D:\Projet_Tovo\RH_Client\bin\Debug\net7.0\clientGRH.runtimeconfig.json
+D:\Projet_Tovo\RH_Client\bin\Debug\net7.0\clientGRH.dll
+D:\Projet_Tovo\RH_Client\bin\Debug\net7.0\clientGRH.pdb
+D:\Projet_Tovo\RH_Client\bin\Debug\net7.0\Npgsql.dll
+D:\Projet_Tovo\RH_Client\obj\Debug\net7.0\clientGRH.csproj.AssemblyReference.cache
+D:\Projet_Tovo\RH_Client\obj\Debug\net7.0\clientGRH.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projet_Tovo\RH_Client\obj\Debug\net7.0\clientGRH.AssemblyInfoInputs.cache
+D:\Projet_Tovo\RH_Client\obj\Debug\net7.0\clientGRH.AssemblyInfo.cs
+D:\Projet_Tovo\RH_Client\obj\Debug\net7.0\clientGRH.csproj.CoreCompileInputs.cache
+D:\Projet_Tovo\RH_Client\obj\Debug\net7.0\clientGRH.MvcApplicationPartsAssemblyInfo.cache
+D:\Projet_Tovo\RH_Client\obj\Debug\net7.0\clientGRH.RazorAssemblyInfo.cache
+D:\Projet_Tovo\RH_Client\obj\Debug\net7.0\clientGRH.RazorAssemblyInfo.cs
+D:\Projet_Tovo\RH_Client\obj\Debug\net7.0\staticwebassets\msbuild.clientGRH.Microsoft.AspNetCore.StaticWebAssets.props
+D:\Projet_Tovo\RH_Client\obj\Debug\net7.0\staticwebassets\msbuild.build.clientGRH.props
+D:\Projet_Tovo\RH_Client\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.clientGRH.props
+D:\Projet_Tovo\RH_Client\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.clientGRH.props
+D:\Projet_Tovo\RH_Client\obj\Debug\net7.0\staticwebassets.pack.json
+D:\Projet_Tovo\RH_Client\obj\Debug\net7.0\staticwebassets.build.json
+D:\Projet_Tovo\RH_Client\obj\Debug\net7.0\staticwebassets.development.json
+D:\Projet_Tovo\RH_Client\obj\Debug\net7.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+D:\Projet_Tovo\RH_Client\obj\Debug\net7.0\scopedcss\bundle\clientGRH.styles.css
+D:\Projet_Tovo\RH_Client\obj\Debug\net7.0\scopedcss\projectbundle\clientGRH.bundle.scp.css
+D:\Projet_Tovo\RH_Client\obj\Debug\net7.0\clientGRH.csproj.CopyComplete
+D:\Projet_Tovo\RH_Client\obj\Debug\net7.0\clientGRH.dll
+D:\Projet_Tovo\RH_Client\obj\Debug\net7.0\refint\clientGRH.dll
+D:\Projet_Tovo\RH_Client\obj\Debug\net7.0\clientGRH.pdb
+D:\Projet_Tovo\RH_Client\obj\Debug\net7.0\clientGRH.genruntimeconfig.cache
+D:\Projet_Tovo\RH_Client\obj\Debug\net7.0\ref\clientGRH.dll

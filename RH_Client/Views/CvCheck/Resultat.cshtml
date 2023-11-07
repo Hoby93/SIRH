@@ -1,25 +1,45 @@
-<link rel="stylesheet" href="~/css/resultatCv.css">
-<div class="container ctn d-none" id="corps">
-    <h1>Résultats</h1>
+@{
+    ViewData["Page"] = "Annonce";
+    ViewData["Title"] = "Resultat Postule";
+}
 
-    @if(ViewBag.flag){
-        <div class="alert alert-success" role="alert">
-            <h2 class="custom-title">Félicitations!</h2>
-            <p>Vous avez les notes requises pour être accepté.</p>
-            <p><a class="btn btn-primary btn-block" href='@Url.Action("Index", "Test",new {idposte = ViewBag.idposte,idbesoin = ViewBag.idbesoin})'>Faire le test</a></p>
-        </div>
-    } else {
-
-        <div class="alert alert-danger" role="alert">
-            <h2 class="custom-title">Désolé!</h2>
-            <p>Vous n'avez pas les notes requises pour être accepté.</p>
-        </div>
-    
-    }
-
+<div class="container">
+  <div class="page-banner">
+    <div class="row justify-content-center align-items-center h-100">
+      <div class="col-md-6 wrap">
+        <nav aria-label="Breadcrumb">
+          <ul class="breadcrumb justify-content-center py-0 bg-transparent">
+            <li class="breadcrumb-item"><a asp-area="" asp-controller="Home" asp-action="Index">Annonce</a></li>
+            <li class="breadcrumb-item active">Postule</li>
+          </ul>
+        </nav>
+        <h1 class="text-center">Le Resultat</h1>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="container ctn-sary" id="chargement">
+<div id="corps" class="page-section d-none">
+    <div class="container">
+        <div class="text-center wow fadeInUp">
+            @if(ViewBag.flag){
+                <div class="subhead">Félicitations!</div>
+                <div class="divider mx-auto"></div>
+                <h2 class="title-section">Vous avez les notes requises pour être accepté</h2>
+                <br/><br/>
+                <a href='@Url.Action("Index", "Test",new {idposte = ViewBag.idposte,idbesoin = ViewBag.idbesoin})' class="btn btn-primary btn-split">
+                    Commencer le test <div class="fab"><span class="mai-play"></span></div>
+                </a>
+            } else {
+                <div class="subhead">Désolé!</div>
+                <div class="divider mx-auto"></div>
+                <h2 class="title-section">Vous n'avez pas les notes requises pour être accepté</h2>
+            }
+        </div>
+    </div> <!-- .container -->
+</div> <!-- .page-section -->
+
+<div class="container ctn-sary text-center" id="chargement">
     <img src="~/img/load.gif">
     <p>En cours de traitement,patientez</p>
 </div>

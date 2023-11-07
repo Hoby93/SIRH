@@ -9,7 +9,7 @@ namespace RH_Client.Models
             try
             {
 
-                string connString = "Server=localhost;Port=5432;Database=rh;User Id=postgres;Password=Dbamanager1;";
+                string connString = "Server=localhost;Port=5432;Database=sirh;User Id=postgres;Password=ITUprom15;";
                 // Console.Write("Connecting to PostgreSQL Server ... ");
                 NpgsqlConnection connection = new NpgsqlConnection(connString);
                 // Console.WriteLine(connection);

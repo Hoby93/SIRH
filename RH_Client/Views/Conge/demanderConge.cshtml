@@ -1,0 +1,175 @@
+@{
+  ViewData["Title"] = "Mon Travail";
+}
+
+<style>
+  .b-0 {
+    border: 0px;
+  }
+  .d-none {
+    display: none;
+  }
+</style>
+
+<div class="container">
+  <div class="page-banner">
+    <div class="row justify-content-center align-items-center h-100">
+      <div class="col-md-6 wrap">
+        <nav aria-label="Breadcrumb">
+          <ul class="breadcrumb justify-content-center py-0 bg-transparent">
+            <li class="breadcrumb-item"><a asp-area="" asp-controller="Home" asp-action="Index">Mon Travail</a></li>
+            <li class="breadcrumb-item active">Detail</li>
+          </ul>
+        </nav>
+        <h1 class="text-center">Mon Travail</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-section">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 py-3">
+            <h2 class="title-section"> Page d'information pour nos employes</h2>
+            <div class="divider"></div>
+
+           <div class="blog-single-wrap m-0 p-0">
+            <div class="post-meta">
+              <div class="post-date">
+                <span class="icon">
+                  <span class="mai-calendar"></span>
+                </span> <a href="#" data-toggle="modal" data-target="#demande-conge">Demande Congee</a>
+              </div>
+              <div class="post-comment-count ml-2">
+                <span class="icon">
+                  <span class="mai-mail"></span>
+                </span> <a href="#" data-toggle="modal" data-target="#message">Message</a>
+              </div>
+            </div>
+          </div>
+
+            <p>Bienvenue sur la page dédiée à nos employés. Chez DUMPEX, nous accordons une grande importance au bien-être de nos collaborateurs et à la bonne marche de notre entreprise.</p>
+            <p>Cette page a pour objectif de vous informer sur les règlements intérieurs qui contribuent à créer un environnement de travail sûr, respectueux et productif pour tous.</p>
+            <p>Nous vous encourageons à prendre le temps de les consulter et à les suivre afin de maintenir une atmosphère de travail harmonieuse.</p>
+        </div>
+        <div class="col-lg-6 py-3">
+          <div class="img-fluid py-3 text-center">
+            <img src="~/img/about_frame.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Demande Conge - Modal -->
+<div id="demande-conge" class="modal fade mt-5" role="dialog" aria-labelledby="demande-conge" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content p-4">
+            <form asp-controller="Conge" asp-action="insererDemande" method="POST">
+            <div class="modal-header b-0">
+                <h4 class="modal-title">Demander du congee</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="type" class="form-label">Type de conge</label>
+                    <select id="type" class="form-select" name="idtypeconge">
+                        <option value="">Choisissez</option>
+                        @foreach (var type in ViewBag.typeConge)
+                        {
+                            <option value="@type.Id">@type.Nom</option>
+                        }
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="debut" class="form-label">Debut conge</label>
+                    <input type="date" class="form-control" id="debut" name="debut">
+                </div>
+                <div class="mb-3">
+                    <label for="fin" class="form-label">Fin conge</label>
+                    <input type="date" class="form-control" id="fin" name="fin">
+                </div>
+                <input type="hidden" value="@ViewBag.idembauche" name="idembauche">
+            </div>
+            <div class="modal-footer b-0">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                <button type="submit" class="btn btn-primary">Confirmer</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- End Modal -->
+
+<!-- Message - Modal -->
+<div id="message" class="modal fade mt-5" role="dialog" aria-labelledby="message" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content p-4">
+            <form asp-controller="Conge" asp-action="insererDemande" method="POST">
+            <div class="modal-header b-0">
+                <h4 class="modal-title">Mes Messages</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- Modal Body -->
+            <div class="modal-body" style="overflow-y: scroll;height: 350px;">
+                @for(int i = 0; i < 5; i++) {
+                <div class="blog-item">
+                    <div class="content">
+                        <h6 class="post-title">
+                            <a>
+                                Even the all-powerful Pointing has no control
+                            </a>
+                        </h6>
+                        <div class="meta">
+                        <a href="#"><span class="mai-calendar"></span> July 12, 2018</a>
+                        <a href="#"><span class="mai-person"></span> Admin</a>
+                        <a href="#"><span class="mai-trash"></span> Supprimer</a>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+            <div class="modal-footer b-0">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- End Modal -->
+
+@* <div class="container w-50 mt-5">
+    @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+    {
+        <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
+    }
+    <h3>Demande de conge</h3>
+    <form asp-controller="Conge" asp-action="insererDemande" method="POST">
+        <div class="mb-3">
+            <label for="type" class="form-label">Type de conge</label>
+            <select id="type" class="form-select" name="idtypeconge">
+                <option value="">Choisissez</option>
+                @foreach (var type in ViewBag.typeConge)
+                {
+                    <option value="@type.Id">@type.Nom</option>
+                }
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="debut" class="form-label">Debut conge</label>
+            <input type="date" class="form-control" id="debut" name="debut">
+        </div>
+        <div class="mb-3">
+            <label for="fin" class="form-label">Fin conge</label>
+            <input type="date" class="form-control" id="fin" name="fin">
+        </div>
+        <input type="hidden" value="@ViewBag.idembauche" name="idembauche">
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+    </form>
+</div> *@

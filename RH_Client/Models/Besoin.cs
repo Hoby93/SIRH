@@ -103,30 +103,38 @@ namespace RH_Client.Models
             }
         }
 
-        public Object[] getCriteres(NpgsqlConnection cnx) {
+        public Object[] getCriteres(NpgsqlConnection cnx)
+        {
             Object[] criteres = new BesoinCritere().select($"where idbesoin = {this.id}", cnx);
 
             return criteres;
         }
 
-        public Boolean IsAdmis(Candidat candidat, NpgsqlConnection cnx) {
-            int age = 2023 - candidat.Dtn.Year;
-            if(this.getNoteCriteres(candidat, cnx) >= noteadmis && age >= agemin && age <= agemax) {
+        public Boolean IsAdmis(Candidate candidat, NpgsqlConnection cnx)
+        {
+            int age = 2023 - candidat.DateNaissance.Year;
+            Console.WriteLine();
+            if (this.getNoteCriteres(candidat, cnx) >= noteadmis && age >= agemin && age <= agemax)
+            {
                 return true;
             }
 
             return false;
         }
 
-        public int incCoeff(CandidatOptionNote option, Boolean isAddition) {
+        public int incCoeff(CandidatOptionNote option, Boolean isAddition)
+        {
             int ans = 0;
-            if(option.Nature == 1) {
-                if(!isAddition) {
+            if (option.Nature == 1)
+            {
+                if (!isAddition)
+                {
                     ans = option.Coeff;
                 }
                 isAddition = true;
-            } 
-            else {
+            }
+            else
+            {
                 isAddition = false;
                 ans = option.Coeff;
             }
@@ -134,36 +142,39 @@ namespace RH_Client.Models
             return ans;
         }
 
-        public double getNoteCriteres(Candidat candidat, NpgsqlConnection cnx) {
+        public double getNoteCriteres(Candidate candidat, NpgsqlConnection cnx)
+        {
             //ze idbesoincandidat voalohany anle candidat amle besoin io ao no azo amnito donc tsy afaka mi postule imbedebebe fa ze voloahany ihany no hita(max ra atao hita foana)
             int idbesoincandidat = new BddObjet().getInteger($"select id from besoin_candidat where idbesoin = {this.Id} and idcandidat = {candidat.Id}", cnx);
             Object[] options = new CandidatOptionNote().select($"where idcandidat = {idbesoincandidat} order by idcritereoption, idbesoincritere", cnx);
-            
-             Console.WriteLine($"select id from besoin_candidat where idbesoin = {this.Id} and idcandidat = {candidat.Id}");
+
+            Console.WriteLine($"select id from besoin_candidat where idbesoin = {this.Id} and idcandidat = {candidat.Id}");
             Console.WriteLine($"where idcandidat = {idbesoincandidat} order by idcritereoption, idbesoincritere");
 
 
             double ans = 0;
             double coeff = 0;
             Boolean isAddition = false;
-            int last  = 0;
+            int last = 0;
 
-            foreach(CandidatOptionNote option in options) {
-                if(option.Idcritereoption != last) {
-                    coeff += incCoeff(option,isAddition);
+            foreach (CandidatOptionNote option in options)
+            {
+                if (option.Idcritereoption != last)
+                {
+                    coeff += incCoeff(option, isAddition);
                     ans += option.Note * option.Coeff;
                     last = option.Idcritereoption;
 
-                    Console.WriteLine("idcritereoption = "+option.Idcritereoption);
-                    Console.WriteLine("coeff = "+incCoeff(option,isAddition));
-                    Console.WriteLine(option.Note+" * "+option.Coeff);
+                    Console.WriteLine("idcritereoption = " + option.Idcritereoption);
+                    Console.WriteLine("coeff = " + incCoeff(option, isAddition));
+                    Console.WriteLine(option.Note + " * " + option.Coeff);
                     Console.WriteLine("----");
                 }
             }
 
-            Console.WriteLine(ans+"/"+coeff);
-            Console.WriteLine(ans/coeff);
-            return  ans/coeff;
+            Console.WriteLine(ans + "/" + coeff);
+            Console.WriteLine(ans / coeff);
+            return ans / coeff;
         }
     }
 }

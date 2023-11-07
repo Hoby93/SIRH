@@ -52,7 +52,7 @@ namespace RH_Client.Models
             try
             {
                 Announcement annonce = new Announcement();
-                annonce = (Announcement) annonce.select("WHERE id = " + this.Id, null)[0];
+                annonce = (Announcement)annonce.select("WHERE id = " + this.Id, null)[0];
                 Company c = (Company)new Company().select(con)[0];
                 annonce.GetNeed(con);
                 annonce.Entreprise = c;

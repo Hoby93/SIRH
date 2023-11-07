@@ -8,7 +8,8 @@ namespace RH_Client.Models
         string libelle;
         int nature;
 
-        public Critere() {
+        public Critere()
+        {
             this.init();
         }
 
@@ -22,59 +23,67 @@ namespace RH_Client.Models
             return "critere";
         }
 
-        public Object[] Options() {
+        public Object[] Options()
+        {
             string query_clauses = $"where idcritere = {this.Id}";
             Object[] options = new BddTitre("critere_option").select(query_clauses, null);
 
             return options;
         }
 
-        public Critere(int id,string libelle,int nature) {
+        public Critere(int id, string libelle, int nature)
+        {
             this.id = id;
             this.libelle = libelle;
             this.nature = nature;
         }
 
-        public List<Critere> getCritereByBesoin(NpgsqlConnection c,int idbesoin){
+        public List<Critere> getCritereByBesoin(NpgsqlConnection c, int idbesoin)
+        {
             bool flag = false;
-            if(c == null){
+            if (c == null)
+            {
                 c = new Connexion().getConnectPostgres();
             }
             List<Critere> valiny = new List<Critere>();
-            string queryString = "SELECT critere.* FROM critere JOIN besoin_critere ON critere.id = besoin_critere.idcritere WHERE besoin_critere.idbesoin ="+idbesoin;
-            using (NpgsqlCommand command = new NpgsqlCommand (queryString, c))
+            string queryString = "SELECT critere.* FROM critere JOIN besoin_critere ON critere.id = besoin_critere.idcritere WHERE besoin_critere.idbesoin =" + idbesoin;
+            using (NpgsqlCommand command = new NpgsqlCommand(queryString, c))
             {
                 using (NpgsqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        int id = Convert.ToInt32(reader["id"]) ;
+                        int id = Convert.ToInt32(reader["id"]);
                         string libelle = reader["libelle"].ToString();
-                        int nature = Convert.ToInt32(reader["nature"]) ;
-                        valiny.Add(new Critere(id,libelle,nature));
+                        int nature = Convert.ToInt32(reader["nature"]);
+                        valiny.Add(new Critere(id, libelle, nature));
                     }
                 }
             }
 
-            if(flag){
+            if (flag)
+            {
                 c.Close();
             }
 
             return valiny;
         }
 
-        public CritereOption[] getCritereOption(NpgsqlConnection c){
+        public CritereOption[] getCritereOption(NpgsqlConnection c)
+        {
             bool flag = false;
-            if(c == null){
+            if (c == null)
+            {
                 c = new Connexion().getConnectPostgres();
             }
 
             CritereOption co = new CritereOption();
-            Object[] val = co.select("WHERE idcritere = "+this.Id,c);
+            Object[] val = co.select("WHERE idcritere = " + this.Id, c);
 
             CritereOption[] farany = val.Cast<CritereOption>().ToArray();
 
-            if(flag){
+            if (flag)
+            {
                 c.Close();
             }
 

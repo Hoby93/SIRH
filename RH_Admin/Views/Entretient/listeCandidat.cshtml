@@ -1,0 +1,89 @@
+@{
+    Boolean isEmpty = true;
+}
+<div class="row grid-margin stretch-card" id="primary">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Liste des candidats ayant des notes superieur</h4>
+
+            <div class="">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Prenom</th>
+                            <th>Telephone</th>
+                            <th>Poste</th>
+                            <th>Note</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (NCBesoin ncb in ViewBag.AllCandidat)
+                        {
+                            isEmpty = false;
+                            <tr>
+                                <td>@ncb.Candidat.Nom</td>
+                                <td>@ncb.Candidat.Prenom</td>
+                                <td>@ncb.Candidat.Telephone</td>
+                                <td>@ncb.Poste.Libelle</td>
+                                <td>@ncb.NoteCandidat.Note</td>
+                                <td>
+                                    <a href="#" class="text-secondary" data-toggle="modal" data-target="#addContrat" onclick="javascript:embaucher(@ncb.Besoin.Id,@ncb.Candidat.Id, @ncb.Poste.Id ,@ncb.Besoin.Idtypecontrat)">
+                                        <i class="fas fa-handshake menu-icon"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                
+                @if(isEmpty) {
+                <div class="text-center p-3 text-secondary">
+                    <em>Aucun element pour l'instant</em>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Contrat - Modal -->
+<div id="addContrat" class="modal fade" role="dialog" aria-labelledby="addContrat" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form method="post" asp-controller="Entretient" asp-action="embaucher">
+                <div class="modal-header b-0">
+                    <h5 class="modal-title title" id="exampleModalLabel">Contrat de la personne</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Brute <input type="text" class="form-control" name="valeurbrute"></p>
+                    <p>Net <input type="text" class="form-control" name="valeurnet"></p>
+                    <p>Date debut <input type="date" class="form-control" name="datedebut"></p>
+                    <p>Date fin<input type="date" class="form-control" name="datefin"></p>
+                    <input type="hidden" class="form-control" id="idbesoin" name="idbesoin">
+                    <input type="hidden" class="form-control" id="idcandidat" name="idcandidat">
+                    <input type="hidden" class="form-control" id="idposte" name="idposte">
+                    <input type="hidden" class="form-control" id="idtypecontrat" name="idtypecontrat">
+                </div>
+                <div class="modal-footer b-0">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                    <button type="submit" class="btn btn-primary">Confirmer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Fin - Modal -->
+
+<script>
+    function embaucher(idbesoin,idcandidat,idposte,idtypecontrat) {
+        document.getElementById("idbesoin").value = idbesoin;
+        document.getElementById("idcandidat").value = idcandidat;
+        document.getElementById("idposte").value = idposte;
+        document.getElementById("idtypecontrat").value = idtypecontrat;
+    }
+</script>

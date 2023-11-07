@@ -1,50 +1,116 @@
-<link rel="stylesheet" href="~/css/ajoutCv.css"/>
-<div class="container ctn">
-    <form asp-controller="Cv" asp-action="ajoutCv" method="POST">
-        <div id="step2">
-            <h3>Critere candidat</h3>
+@{  
+    ViewData["Title"] = "Postule Annonce";
+    Announcement annonce = ViewBag.annonce;
+}
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
+}
+<div class="page-section pt-5">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ul class="breadcrumb p-0 mb-0 bg-transparent">
+          <li class="breadcrumb-item"><a asp-area="" asp-controller="Home" asp-action="Index">Accueil</a></li>
+          <li class="breadcrumb-item"><a asp-area="" asp-controller="Home" asp-action="Annonce">Annonce</a></li>
+          <li class="breadcrumb-item"><a asp-area="" asp-controller="Home" asp-action="Annonce">Detail</a></li>
+          <li class="breadcrumb-item active">Postuler</li>
+        </ul>
+      </nav>
+      
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="blog-single-wrap">
+            <h1 class="post-title">Candidat Critere</h1><br/>
+            <form asp-controller="Cv" asp-action="ajoutCv" method="POST" class="contact-form">
+              <div class="col-md-8" id="step2">
+                  @foreach (var critere in ViewBag.allCritere)
+                  {
+                      <p>@critere.Libelle</p>
+                      @if(critere.Nature == 0)
+                      {
+                          <select class="form-select form-control" name="critereOption-@critere.Id">
+                              @foreach (var option in ViewBag.dicoCritereOption[critere.Id])
+                              {
+                                  <option value="@option.Id">@option.Libelle</option>
+                              }
+                          </select>
+                      }
+                      else if(critere.Nature == 1)
+                      {
+                          foreach (var option in ViewBag.dicoCritereOption[critere.Id])
+                          {
+                              <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" id="critereOption-@critere.Id-@option.Id" name="critereOption-@critere.Id" value="@option.Id">
+                                  <label class="form-check-label" for="critereOption-@critere.Id-@option.Id">
+                                      @option.Libelle
+                                  </label>
+                              </div>
+                          }
+                      }
 
-            @foreach (var critere in ViewBag.allCritere)
-            {
-                <p>@critere.Libelle</p>
-                @if(critere.Nature == 0)
-                {
-                    <select class="form-select" name="critereOption-@critere.Id">
-                        @foreach (var option in ViewBag.dicoCritereOption[critere.Id])
-                        {
-                            <option value="@option.Id">@option.Libelle</option>
-                        }
-                    </select>
-                }
-                else if(critere.Nature == 1)
-                {
-                    foreach (var option in ViewBag.dicoCritereOption[critere.Id])
-                    {
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="critereOption-@critere.Id-@option.Id" name="critereOption-@critere.Id" value="@option.Id">
-                            <label class="form-check-label" for="critereOption-@critere.Id-@option.Id">
-                                @option.Libelle
-                            </label>
-                        </div>
-                    }
-                }
+                      else if(critere.Nature == 2)
+                      {
+                          foreach (var option in ViewBag.dicoCritereOption[critere.Id])
+                          {
+                              <div class="form-check">
+                                  <input class="form-check-input" type="radio" id="critereOption-@critere.Id-@option.Id" name="critereOption-@critere.Id" value="@option.Id">
+                                  <label class="form-check-label" for="critereOption-@critere.Id-@option.Id">
+                                      @option.Libelle
+                                  </label>
+                              </div>
+                          }
+                      }
+                      <br>
+                  }
+                  <input type="hidden"  class="form-control" name="idbesoin" value="@ViewBag.idbesoin">
+                  <input type="hidden"  class="form-control" name="idcandidat" value="@ViewBag.idcandidat">
+                  <button class="btn btn-primary" type="submit">Confirmer</button>
+              </div>
+            </form>
+          </div>
 
-                else if(critere.Nature == 2)
-                {
-                    foreach (var option in ViewBag.dicoCritereOption[critere.Id])
-                    {
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" id="critereOption-@critere.Id-@option.Id" name="critereOption-@critere.Id" value="@option.Id">
-                            <label class="form-check-label" for="critereOption-@critere.Id-@option.Id">
-                                @option.Libelle
-                            </label>
-                        </div>
-                    }
-                }
-                <br>
-            }
-            <input type="hidden"  class="form-control" name="idbesoin" value="@ViewBag.idbesoin">
-            <button class="btn btn-success" type="submit">OK</button>
         </div>
-    </form>
-</div>
+        <div class="col-lg-4">
+          <div class="widget">
+            <!-- Widget search -->
+            <div class="widget-box">
+              <form action="#" class="search-widget">
+                <input type="text" class="form-control" placeholder="Entrez un mot..">
+                <button type="submit" class="btn btn-primary btn-block">Recherche</button>
+              </form>
+            </div>
+
+            <!-- Widget Categories -->
+            <div class="widget-box">
+              <h4 class="widget-title">Type Contrat</h4>
+              <div class="divider"></div>
+
+              <ul class="categories">
+                <li><a href="#">Duree indeterminee</a></li>
+                <li><a href="#">Duree determinee</a></li>
+                <li><a href="#">CDI interimaire</a></li>
+                <li><a href="#">Duree determinee Senior</a></li>
+                <li><a href="#">Travail a temps partiel</a></li>
+              </ul>
+            </div>
+
+            <!-- Widget Tag Cloud -->
+            <div class="widget-box">
+              <h4 class="widget-title">Service</h4>
+              <div class="divider"></div>
+
+              <div class="tag-clouds">
+                <a href="#" class="tag-cloud-link">RH</a>
+                <a href="#" class="tag-cloud-link">Commercial</a>
+                <a href="#" class="tag-cloud-link">Informatique</a>
+                <a href="#" class="tag-cloud-link">Stock</a>
+                <a href="#" class="tag-cloud-link">Autre</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>

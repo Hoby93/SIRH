@@ -8,10 +8,11 @@ namespace RH_Client.Models
         string description;
 
 
-        public Poste() {
+        public Poste()
+        {
             this.init();
         }
-        
+
         public Poste(int id, int idservice, string libelle, string description)
         {
             this.id = id;

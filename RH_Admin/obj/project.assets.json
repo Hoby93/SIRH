@@ -2154,19 +2154,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Hobiniaina\\.nuget\\packages\\": {}
+    "C:\\Users\\ITU\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Projet_Tovo\\SIRH\\SIRH.csproj",
+      "projectUniqueName": "D:\\Projet_Tovo\\RH_Admin\\SIRH.csproj",
       "projectName": "SIRH",
-      "projectPath": "E:\\Projet_Tovo\\SIRH\\SIRH.csproj",
-      "packagesPath": "C:\\Users\\Hobiniaina\\.nuget\\packages\\",
-      "outputPath": "E:\\Projet_Tovo\\SIRH\\obj\\",
+      "projectPath": "D:\\Projet_Tovo\\RH_Admin\\SIRH.csproj",
+      "packagesPath": "C:\\Users\\ITU\\.nuget\\packages\\",
+      "outputPath": "D:\\Projet_Tovo\\RH_Admin\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Hobiniaina\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\ITU\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"

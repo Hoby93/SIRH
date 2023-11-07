@@ -7,7 +7,8 @@ namespace RH_Client.Models
         int id;
         string nom;
         string prenom;
-        DateTime dtn;
+        int genre;
+        DateTime dateNaissance;
         string telephone;
         string email;
         string adresse;
@@ -22,14 +23,15 @@ namespace RH_Client.Models
             this.init();
             this.id = idcandidat;
         }
-        
 
-        public Candidate(int id, string nom, string prenom, DateTime dtn, string telephone, string email, string adresse)
+
+        public Candidate(int id, string nom, string prenom, int genre, DateTime dtn, string telephone, string email, string adresse)
         {
             Id = id;
             Nom = nom;
             Prenom = prenom;
-            Dtn = dtn;
+            Genre = genre;
+            DateNaissance = dtn;
             Telephone = telephone;
             Email = email;
             Adresse = adresse;
@@ -41,7 +43,8 @@ namespace RH_Client.Models
         public string Telephone { get => telephone; set => telephone = value; }
         public string Email { get => email; set => email = value; }
         public string Adresse { get => adresse; set => adresse = value; }
-        public DateTime Dtn { get => dtn; set => dtn = value; }
+        public DateTime DateNaissance { get => dateNaissance; set => dateNaissance = value; }
+        public int Genre { get => genre; set => genre = value; }
 
         public override string tableName()
         {
@@ -89,7 +92,7 @@ namespace RH_Client.Models
             try
             {
                 CandidatCritere cc = new CandidatCritere();
-                cc.IdCandidat = this.getInteger("select max(id) from besoin_candidat",null);// satria idcandidat ao am candidat critere tsy idcandidat fa idbesoincandidat
+                cc.IdCandidat = this.getInteger("select max(id) from besoin_candidat", null);// satria idcandidat ao am candidat critere tsy idcandidat fa idbesoincandidat
                 foreach (var item in critereOption)
                 {
                     cc.IdCritereOption = item;

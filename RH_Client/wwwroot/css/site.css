@@ -27,3 +27,6 @@ body {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+.hidde{
+  display: none;
+}

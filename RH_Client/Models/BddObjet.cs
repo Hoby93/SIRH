@@ -5,9 +5,9 @@ namespace RH_Client.Models
 {
     public class BddObjet
     {
-        String db = "rh";
+        String db = "sirh";
         String user = "postgres";
-        String pwd = "Dbamanager1";
+        String pwd = "ITUprom15";
 
         // Avoir le nom de table
         public virtual String tableName()
@@ -21,9 +21,10 @@ namespace RH_Client.Models
             Type type = this.GetType();
             PropertyInfo[] propreties = type.GetProperties();
 
-            foreach(PropertyInfo proprety in propreties)
+            foreach (PropertyInfo proprety in propreties)
             {
-                if(proprety.PropertyType == typeof(int) || proprety.PropertyType == typeof(double)) {
+                if (proprety.PropertyType == typeof(int) || proprety.PropertyType == typeof(double))
+                {
                     proprety.SetValue(this, -1);
                 }
             }
@@ -62,11 +63,12 @@ namespace RH_Client.Models
             PropertyInfo[] propreties = type.GetProperties();
             List<String> columnNames = getColumnOfDatabase(connection);
 
-            foreach(PropertyInfo proprety in propreties)
+            foreach (PropertyInfo proprety in propreties)
             {
                 foreach (string columnName in columnNames)
                 {
-                    if(string.Equals(proprety.Name, columnName, StringComparison.OrdinalIgnoreCase)) { 
+                    if (string.Equals(proprety.Name, columnName, StringComparison.OrdinalIgnoreCase))
+                    {
                         ans.Add(proprety.Name);
                     }
                 }
@@ -76,7 +78,7 @@ namespace RH_Client.Models
         }
 
         // Avoir la valeur d'un attribut 
-        public Object getProprety(String argName) 
+        public Object getProprety(String argName)
         {
             Type type = this.GetType();
             PropertyInfo proprety = type.GetProperty(argName);
@@ -85,7 +87,7 @@ namespace RH_Client.Models
         }
 
         // Modifier la valeur d'un attribut
-        public void setProprety(Object objectInstance, Object arg, String argName) 
+        public void setProprety(Object objectInstance, Object arg, String argName)
         {
             Type type = this.GetType();
             PropertyInfo proprety = type.GetProperty(argName);
@@ -97,7 +99,7 @@ namespace RH_Client.Models
         {
             String ans = $"'{arg}'".Replace(',', '.');
 
-            if(arg is int || arg is double)
+            if (arg is int || arg is double)
             {
                 ans = $"{arg}".Replace(',', '.');
             }
@@ -110,10 +112,10 @@ namespace RH_Client.Models
         {
             String ans = "";
 
-            for(int i = 0; i < columnNames.Count; i++)
+            for (int i = 0; i < columnNames.Count; i++)
             {
                 ans += columnNames[i];
-                if(i != columnNames.Count - 1)
+                if (i != columnNames.Count - 1)
                 {
                     ans += ",";
                 }
@@ -151,8 +153,10 @@ namespace RH_Client.Models
         }
 
         // Generer la condition approprie a une modification
-        public String scriptModifCondition(String condition, String key) {
-            if(condition != "") {
+        public String scriptModifCondition(String condition, String key)
+        {
+            if (condition != "")
+            {
                 return condition;
             }
             return $"{key} = {getProprety(key)}";
@@ -190,7 +194,8 @@ namespace RH_Client.Models
                         foreach (String attributName in attributsName)
                         {
                             int colNum = reader.GetOrdinal(attributName);
-                            if(!reader.IsDBNull(colNum)) {
+                            if (!reader.IsDBNull(colNum))
+                            {
                                 this.setProprety(objectInstance, reader.GetValue(colNum), attributName);
                             }
                         }
@@ -235,7 +240,8 @@ namespace RH_Client.Models
                         foreach (String attributName in attributsName)
                         {
                             int colNum = reader.GetOrdinal(attributName);
-                            if(!reader.IsDBNull(colNum)) {
+                            if (!reader.IsDBNull(colNum))
+                            {
                                 this.setProprety(objectInstance, reader.GetValue(colNum), attributName);
                             }
                         }
@@ -283,8 +289,9 @@ namespace RH_Client.Models
                 {
                     // Invoke the method and return the result
                     Object value = getProprety(col);
-                    if (value != null && !value.ToString().Equals("-1") && !value.ToString().Equals("01/01/0001 00:00:00")) {
-                        string updateQuery = $"UPDATE {tableName()} SET {col} = {forQueryValue(value)} WHERE {scriptModifCondition(condition,key)}";
+                    if (value != null && !value.ToString().Equals("-1") && !value.ToString().Equals("01/01/0001 00:00:00"))
+                    {
+                        string updateQuery = $"UPDATE {tableName()} SET {col} = {forQueryValue(value)} WHERE {scriptModifCondition(condition, key)}";
                         //Console.WriteLine(updateQuery);
                         command.CommandText = updateQuery;
 
@@ -435,7 +442,7 @@ namespace RH_Client.Models
                 {
                     while (reader.Read())
                     {
-                        return (int) reader.GetValue(0);
+                        return (int)reader.GetValue(0);
                     }
                 }
             }

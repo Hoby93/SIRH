@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="~/css/style.css">
 </head>
 <body>
+  @if(ViewData["Title"] != "Connexion") {
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -301,9 +302,9 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" asp-controller="Home" asp-action="Index">
               <i class="icon-grid menu-icon"></i>
-              <span class="menu-title">Dashboard</span>
+              <span class="menu-title">Accueil</span>
             </a>
           </li>
           <li class="nav-item">
@@ -314,10 +315,7 @@
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Ajout</a></li>
-                <li class="nav-item"> <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Modification</a></li>
-                <li class="nav-item"> <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Liste</a></li>
-                <li class="nav-item"> <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Suppression</a></li>
+                <li class="nav-item"> <a class="nav-link" asp-area="" asp-controller="Services" asp-action="listeService">Liste</a></li>
               </ul>
             </div>
           </li>
@@ -355,7 +353,8 @@
             </a>
             <div class="collapse" id="tables">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">Creation</a></li>
+                <li class="nav-item"> <a class="nav-link" asp-area="" asp-controller="Announcement" asp-action="Index">Creation</a></li>
+                <li class="nav-item"> <a class="nav-link" asp-area="" asp-controller="Announcement" asp-action="Liste">Liste</a></li>
               </ul>
             </div>
           </li>
@@ -379,7 +378,7 @@
             </a>
             <div class="collapse" id="auth">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Creation</a></li>
+                <li class="nav-item"> <a class="nav-link" asp-area="" asp-controller="Besoin" asp-action="InsertTest">Creation</a></li>
                 <li class="nav-item"> <a class="nav-link" asp-area="" asp-controller="Test" asp-action="Index">Resultat</a></li>
               </ul>
             </div>
@@ -392,8 +391,45 @@
             </a>
             <div class="collapse" id="error">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Candidats</a></li>
-                <li class="nav-item"> <a class="nav-link" asp-area="" asp-controller="Test" asp-action="Index">Emploi du temps</a></li>
+                <li class="nav-item"> <a class="nav-link" asp-area="" asp-controller="Entretient" asp-action="listeBesoin">Candidats</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#conge" aria-expanded="false" aria-controls="conge">
+              <i class="mdi mdi-pause-circle menu-icon"></i>
+              <span class="menu-title">Conge</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="conge">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" asp-area="" asp-controller="Conge" asp-action="listeDemande">Liste de demande</a></li>
+                <li class="nav-item"> <a class="nav-link" asp-area="" asp-controller="Conge" asp-action="finirConge">Finir conge</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#contratessai" aria-expanded="false" aria-controls="error">
+              <i class="mdi mdi-file-document menu-icon"></i>
+              <span class="menu-title">Contrat d' essai</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="contratessai">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" asp-area="" asp-controller="TrialContract" asp-action="Index">Ajout</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#employe" aria-expanded="false" aria-controls="error">
+              <i class="mdi mdi-file-document menu-icon"></i>
+              <span class="menu-title">Suivi</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="employe">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" asp-area="" asp-controller="Employe" asp-action="Index">Liste des employes</a></li>
+                <li class="nav-item"> <a class="nav-link" asp-area="" asp-controller="Employe" asp-action="Absences">Journal des conges</a></li>
               </ul>
             </div>
           </li>
@@ -426,12 +462,18 @@
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
+    } else {
+      <main role="main" class="pb-3">
+        @RenderBody()
+      </main>
+  }
 
   <!-- plugins:js -->
   <script src="~/vendors/js/vendor.bundle.base.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
   <script src="~/vendors/chart.js/Chart.min.js"></script>
+  <script src="~/vendors/moment/moment.min.js"></script>
   <script src="~/vendors/datatables.net/jquery.dataTables.js"></script>
   <script src="~/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
   <script src="~/js/dataTables.select.min.js"></script>

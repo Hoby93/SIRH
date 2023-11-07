@@ -1,0 +1,408 @@
+﻿@page
+@{
+    Employe employe = (Employe) ViewBag.Employe;
+    Object[] faits = (Object[]) ViewBag.Faits;
+}
+
+<style>
+    .dropdown .dropdown-toggle:after {
+        display: none;
+    }
+</style>
+
+<div class="row grid-margin stretch-card"  id="primary">
+    <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-4 col-md-5">
+                        <div class="card card-user">
+                            <div class="content p-4">
+                                <div class="author">
+                                  <div class="text-center">
+                                    <a  class="text-center" href="#tabs2-tab1" role="tab" aria-selected="true"
+                                        data-toggle="tab">
+                                        @if(employe.Etat == 1) {
+                                        <div class="p-1 br-50">
+                                            <img class="br-50" src="~/images/faces/face1.jpg" alt="..." style="border: 5px solid rgba(107, 99, 180, 0.9);"/><br>
+                                        </div>
+                                        } else {
+                                        <div class="p-1 br-50">
+                                            <img class="br-50" src="~/images/faces/face1.jpg" alt="..." style="border: 5px solid rgba(132, 126, 124, 0.9);"/><br>
+                                        </div>
+                                        }
+                                    </a>
+                                  </div>
+                                  <br/>
+                                  <h4 class="title text-center">@employe.Nom @employe.Prenom<br />
+                                     <a href="#"><small>#@employe.Poste</small></a>
+                                  </h4>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="text-center">
+                                <div class="btn-group mb-3 text-center" role="group" aria-label="Basic example" style="width: 100%;">
+                                    <ul id="tabs2" class="nav nav-tabs nav-v2 nav-primary ml-4 mb-3 b-0" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="btn btn-outline-light btn-fw b-none active" href="#tabs2-tab1" role="tab" aria-selected="true"
+                                                data-toggle="tab">
+                                                <i class="ti-user"></i>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="btn btn-outline-light btn-fw b-none" href="#tabs2-tab2" role="tab" aria-selected="false"
+                                                data-toggle="tab">
+                                                <i class="ti-star"></i>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="btn btn-outline-light btn-fw b-none" href="#tabs2-tab3" role="tab" aria-selected="false"
+                                                data-toggle="tab">
+                                                <i class="ti-clipboard"></i>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item dropdown m-0">
+                                            <button type="button" class="btn btn-outline-light btn-fw b-none dropdown-toggle" id="dropdownMenuIconButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="ti-time"></i>
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuIconButton3">
+                                                <h6 class="dropdown-header">Historique</h6>
+                                                <a class="btn btn-outline-light btn-fw b-none w-100 text-left" href="#tabs2-tab4" role="tab" aria-selected="false" data-toggle="tab">
+                                                    Conges
+                                                </a>
+                                                <a class="btn btn-outline-light btn-fw b-none w-100 text-left" href="#tabs2-tab5" role="tab" aria-selected="false" data-toggle="tab">
+                                                    Faits
+                                                </a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content col-lg-8 col-md-7 b-none p-0">
+                        <!-- Profil -->
+                        <div class="card p-4 tab-pane fade show active" id="tabs2-tab1" role="tabpanel">
+                            <div class="header">
+                                <h3 class="title">Profil</h3><br/>
+                            </div>
+                            <div class="content">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Nom</label>
+                                                <input type="text" class="form-control border-input" value="@employe.Nom">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Prenom</label>
+                                                <input type="text" class="form-control border-input" value="@employe.Prenom">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Genre</label>
+                                                <input type="text" class="form-control border-input" placeholder="First Name" value="Homme">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Date naissance</label>
+                                                <input type="text" class="form-control border-input" placeholder="Last Name" value="@employe.Dateembauche">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label>Service</label>
+                                                <input type="text" class="form-control border-input" placeholder="Company" value="@employe.Service">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <div class="form-group">
+                                                <label>Poste</label>
+                                                <input type="text" class="form-control border-input" placeholder="Username" value="@employe.Poste">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Email</label>
+                                                <input type="email" class="form-control border-input" placeholder="Home Address" value="@employe.Email">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Address</label>
+                                                <input type="text" class="form-control border-input" placeholder="Home Address" value="@employe.Adresse">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Apropos</label>
+                                                <textarea rows="5" class="form-control border-input" placeholder="Here can be your description" value="Mike">Aucun description</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <button type="submit" class="btn btn-info btn-fill">Modifier</button>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- Profil Fin -->
+                        
+                        <!-- Critere -->
+                        <div class="tab-pane fade card p-4" id="tabs2-tab2" role="tabpanel">
+                            <div class="header">
+                                <h3 class="title">Competences</h3><br/>
+                            </div>
+                            <div class="content">
+                                <form>
+                                    <div class="row">
+                                    @{Boolean open = true;}
+                                    @foreach(CandidatCritere critere in employe.Criteres(null)) {
+                                        @if(critere.Nature == 1) {
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                @if(open) {
+                                                    <label>@critere.Critere</label>
+                                                    open = false;
+                                                } else {
+                                                    <label><br/></label>
+                                                }
+                                                <input type="email" class="form-control border-input" placeholder="Home Address" value="@critere.Libelle">
+                                            </div>
+                                        </div>
+                                        } else {
+                                        open = true;
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>@critere.Critere</label>
+                                                <input type="email" class="form-control border-input" placeholder="Home Address" value="@critere.Libelle">
+                                            </div>
+                                        </div>
+                                        }
+                                    }
+                                    </div>
+
+                                    <div class="text-right">
+                                        <button type="submit" class="btn btn-info btn-fill">Modifier</button>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- Critere Fin -->
+
+                        <!-- Contrat -->
+                        <div class="tab-pane fade card p-4" id="tabs2-tab3" role="tabpanel">
+                            <div class="header">
+                                <h3 class="title">Historique Contrat</h3>
+                            </div>
+                            <div class="row mb-2">
+                                <a class="btn btn-sm btn-primary ml-auto mr-2" data-toggle="modal" data-target="#addContrat" style="border-radius: 5px">
+                                    <i class="mdi mdi-autorenew"></i>
+                                </a>
+                            </div>
+                            <div class="content">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                            <th>Type</th>
+                                            <th>Salaire Brute</th>
+                                            <th>Salaire Net</th>
+                                            <th>Durée</th>
+                                            <th>Etat</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @for(int i = 0; i < 5; i++) {
+                                            <tr>
+                                                <td><label class="badge badge-primary">1</label></td>
+                                                <td>1,200,000.00</td>
+                                                <td>1,050,000.00</td>
+                                                <td>18 Jrs</td>
+                                                <td><label class="badge badge-secondary">Expiré</label></td>
+                                            </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <br/><br/>
+                            </div>
+                        </div>
+                        <!-- Contrat Fin -->
+
+                        <!-- Conge -->
+                        <div class="tab-pane fade card p-4" id="tabs2-tab4" role="tabpanel">
+                            <div class="header">
+                                <h3 class="title">Historique Congé</h3>
+                            </div>
+                            <div class="content">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                            <th>Nature</th>
+                                            <th>Debut</th>
+                                            <th>Fin</th>
+                                            <th>Durée</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @for(int i = 0; i < 5; i++) {
+                                            <tr>
+                                                <td><label class="badge badge-success">1</label></td>
+                                                <td>12-10-2023</td>
+                                                <td>30-10-2023</td>
+                                                <td>18 Jrs</td>
+                                            </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <br/><br/>
+                                <div class="row text-center">
+                                    <div class="col-md-4">
+                                        <h5>10<br /><small><strongx>Total</strongx></small></h5>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h5>05<br /><small class="title"><strongx>Pris</strongx></small></h5>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h5>05<br /><small class="title"><strongx>Reste</strongx></small></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Conge Fin -->
+
+                        <!-- Fait -->
+                        <div class="tab-pane fade card p-4" id="tabs2-tab5" role="tabpanel">
+                            <div class="header">
+                                <h3 class="title">Historique Fait</h3>
+                            </div>
+                            <div class="row mb-2">
+                                <a class="btn btn-sm btn-primary ml-auto mr-2" data-toggle="modal" data-target="#addFait" style="border-radius: 5px">
+                                    <i class="mdi mdi-plus"></i>
+                                </a>
+                            </div>
+                            <div class="content">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                            <th>Nature</th>
+                                            <th>Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (Faits fait in faits) {
+                                            <tr>
+                                                <td><label class="badge badge-danger">Avertissement</label></td>
+                                                <td>@fait.Datefait</td>
+                                            </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+
+                                    @if(faits.Length == 0) {
+                                        <div class="text-center p-3 text-secondary">
+                                            <em>Aucun element pour l'instant</em>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Fait Fin -->
+                    </div>
+                </div>
+            </div>
+</div>
+
+<!-- Contrat - Modal -->
+<div id="addContrat" class="modal fade" role="dialog" aria-labelledby="addContrat" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header b-0">
+                <h5 class="modal-title title" id="exampleModalLabel">Renouveler Contrat</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group col-12">
+                        <label for="name">Choix Contrat</label>
+                        <select class="custom-select">
+                            <option>Aucun</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-12">
+                        <label for="name">Date</label>
+                        <input type="date" class="form-control" value="" id="password" name="password">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer b-0">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-primary">Confirmer</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Modal -->
+
+<!-- Fait - Modal -->
+<div id="addFait" class="modal fade" role="dialog" aria-labelledby="addFait" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form method="post" asp-controller="Employe" asp-action="AddFait">
+                <input type="hidden" name="idembauche" value="@employe.Idembauche">
+                <input type="hidden" name="count" value="@faits.Length">
+                <div class="modal-header b-0">
+                    <h5 class="modal-title title" id="exampleModalLabel">Insertion Fait</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group col-12">
+                        <label for="action">Choix Action</label>
+                        <select name="action" class="custom-select">
+                            <option value="0">Aucun</option>
+                            <option value="1">Avertissement</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-12">
+                        <label for="name">Date</label>
+                        <input type="date" class="form-control" id="password" name="datefait">
+                    </div>
+                </div>
+                <div class="modal-footer b-0">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                    <button type="submit" class="btn btn-primary">Confirmer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- End Modal -->
+
+<script src="~/js/modal.js"></script>

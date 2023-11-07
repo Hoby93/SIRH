@@ -9,65 +9,125 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = clientGRH
 build_property.RootNamespace = clientGRH
-build_property.ProjectDir = D:\S5\mr tovo\RH_Client\
+build_property.ProjectDir = d:\Projet_Tovo\RH_Client\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\S5\mr tovo\RH_Client
+build_property.MSBuildProjectDirectory = d:\Projet_Tovo\RH_Client
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/S5/mr tovo/RH_Client/Views/CvCheck/Resultat.cshtml]
+[d:/Projet_Tovo/RH_Client/Views/Announcement/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5ub3VuY2VtZW50XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Projet_Tovo/RH_Client/Views/Announcement/Liste.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5ub3VuY2VtZW50XExpc3RlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Projet_Tovo/RH_Client/Views/Besoin/Ajout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmVzb2luXEFqb3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Projet_Tovo/RH_Client/Views/Besoin/AjoutTest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmVzb2luXEFqb3V0VGVzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Projet_Tovo/RH_Client/Views/Conge/demanderConge.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uZ2VcZGVtYW5kZXJDb25nZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Projet_Tovo/RH_Client/Views/Conge/erreurConfidentielle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uZ2VcZXJyZXVyQ29uZmlkZW50aWVsbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Projet_Tovo/RH_Client/Views/CvCheck/Resultat.2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3ZDaGVja1xSZXN1bHRhdC4yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Projet_Tovo/RH_Client/Views/CvCheck/Resultat.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3ZDaGVja1xSZXN1bHRhdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/S5/mr tovo/RH_Client/Views/Cv/AjoutCv.cshtml]
+[d:/Projet_Tovo/RH_Client/Views/Cv/AjoutCv.2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3ZcQWpvdXRDdi4yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Projet_Tovo/RH_Client/Views/Cv/AjoutCv.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3ZcQWpvdXRDdi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/S5/mr tovo/RH_Client/Views/Home/Annonce.cshtml]
+[d:/Projet_Tovo/RH_Client/Views/Cv/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3ZcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Projet_Tovo/RH_Client/Views/Cv/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3ZcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Projet_Tovo/RH_Client/Views/Cv/Yes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3ZcWWVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Projet_Tovo/RH_Client/Views/Home/Annonce.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBbm5vbmNlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/S5/mr tovo/RH_Client/Views/Home/Index.cshtml]
+[d:/Projet_Tovo/RH_Client/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/S5/mr tovo/RH_Client/Views/Home/InfoAnnonce.cshtml]
+[d:/Projet_Tovo/RH_Client/Views/Home/InfoAnnonce.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmZvQW5ub25jZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/S5/mr tovo/RH_Client/Views/Home/Privacy.cshtml]
+[d:/Projet_Tovo/RH_Client/Views/Home/ListPost.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMaXN0UG9zdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Projet_Tovo/RH_Client/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/S5/mr tovo/RH_Client/Views/Login/Login.cshtml]
+[d:/Projet_Tovo/RH_Client/Views/Login/AddCandidat.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cQWRkQ2FuZGlkYXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Projet_Tovo/RH_Client/Views/Login/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/S5/mr tovo/RH_Client/Views/Shared/Error.cshtml]
+[d:/Projet_Tovo/RH_Client/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/S5/mr tovo/RH_Client/Views/Shared/_ValidationScriptsPartial.cshtml]
+[d:/Projet_Tovo/RH_Client/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/S5/mr tovo/RH_Client/Views/Test/Note.cshtml]
+[d:/Projet_Tovo/RH_Client/Views/Test/erreurConfidentielle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdFxlcnJldXJDb25maWRlbnRpZWxsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Projet_Tovo/RH_Client/Views/Test/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Projet_Tovo/RH_Client/Views/Test/Note.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdFxOb3RlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/S5/mr tovo/RH_Client/Views/Test/Test.cshtml]
+[d:/Projet_Tovo/RH_Client/Views/Test/Test.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdFxUZXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/S5/mr tovo/RH_Client/Views/_ViewImports.cshtml]
+[d:/Projet_Tovo/RH_Client/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/S5/mr tovo/RH_Client/Views/_ViewStart.cshtml]
+[d:/Projet_Tovo/RH_Client/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/S5/mr tovo/RH_Client/Views/Shared/_Layout.cshtml]
+[d:/Projet_Tovo/RH_Client/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-qq0rctkj88

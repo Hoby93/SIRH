@@ -1,0 +1,73 @@
+@{
+    Boolean isEmpty = true;
+}
+
+<div class="row grid-margin stretch-card" id="primary">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Liste des demandes de conge</h4>
+            @if (ViewBag.ErrorMessage != null)
+            {
+                <div class="alert alert-danger">
+                    @ViewBag.ErrorMessage
+                </div>
+            }
+            <div class="">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Identifiant</th>
+                            <th>Nom</th>
+                            <th>Prenom</th>
+                            @* <th>Telephone</th> *@
+                            <th>Poste</th>
+                            <th>Type conge</th>
+                            <th>Debut conge</th>
+                            <th>Fin conge</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (AffDemandeConge adc in ViewBag.demande)
+                        {
+                            isEmpty = false;
+                            <tr>
+                                <td>@adc.Candidat.Id</td>
+                                <td>@adc.Candidat.Nom</td>
+                                <td>@adc.Candidat.Prenom</td>
+                                @* <td>@adc.Candidat.Telephone</td> *@
+                                <td>@adc.Poste.Libelle</td>
+                                <td>@adc.TypeConge.Nom</td>
+                                <td>@adc.DemandeConge.Debutconge</td>
+                                <td>@adc.DemandeConge.Finconge</td>
+                                <td>
+                                    <div class="col-md-2 dropdown">
+                                        <button class="btn btn-link text-secondary mb-0">
+                                            <i class="fas fa-ellipsis-v "></i>
+                                        </button>
+                                        <div style="width:90px" class="dropdown-content border-radius-md shadow">
+                                            <a
+                                                href="@Url.Action("accepterDemande", "Conge", new {iddemande = @adc.DemandeConge.Id})">
+                                                Accepter
+                                            </a>
+                                            <a
+                                                href="@Url.Action("refuserDemande", "Conge", new {iddemande = @adc.DemandeConge.Id})">
+                                                Refuser
+                                            </a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                @if(isEmpty) {
+                <div class="text-center p-3 text-secondary">
+                    <em>Aucun element pour l'instant</em>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

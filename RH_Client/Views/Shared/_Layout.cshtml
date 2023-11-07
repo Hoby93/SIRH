@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
@@ -14,9 +15,10 @@
     <link rel="stylesheet" href="~/css/theme.css">
 </head>
 <body>
+  @if(ViewData["Title"] != "Login") {
+  <div class="page">
+    <div class="back-to-top"></div>
     <header>
-        <div class="back-to-top"></div>
-  <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky" data-offset="500">
       <div class="container">
         <a href="#" class="navbar-brand">Seo<span class="text-primary">Gram.</span></a>
@@ -31,16 +33,16 @@
               <a class='nav-link @(ViewBag.Title == "Accueil" ? "active" : "")' asp-area="" asp-controller="Home" asp-action="Index">Accueil</a>
             </li>
             <li class="nav-item">
-              <a class='nav-link @(ViewBag.Title == "Annonce" ? "active" : "")' asp-area="" asp-controller="Home" asp-action="Annonce">Annonce</a>
+              <a class='nav-link @(ViewBag.Page == "Annonce" ? "active" : "")' asp-area="" asp-controller="Home" asp-action="Annonce">Annonce</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Resultat</a>
+              <a class='nav-link @(ViewBag.Title == "Mon Travail" ? "active" : "")' asp-area="" asp-controller="Conge" asp-action="demanderConge">Mon Travail</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Contact</a>
             </li>
             <li class="nav-item">
-              <a class="btn btn-primary ml-lg-2" href="#">Notre equipe</a>
+              <a class="btn btn-primary ml-lg-2" asp-area="" asp-controller="Login" asp-action="Index">Login</a>
             </li>
           </ul>
         </div>
@@ -52,7 +54,7 @@
 
     <div class="container">
         <main role="main" class="pb-3">
-                @RenderBody()
+          @RenderBody()
         </main>
     </div>
 
@@ -101,6 +103,15 @@
       <p class="text-center" id="copyright">Copyright &copy; 2020. This template design and develop by <a href="https://macodeid.com/" target="_blank">MACode ID</a></p>
     </div>
   </footer>
+  </div>
+  } else {
+     <div class="container">
+        <br><br>
+        <main role="main" class="pb-3">
+          @RenderBody()
+        </main>
+    </div>
+  }
     
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

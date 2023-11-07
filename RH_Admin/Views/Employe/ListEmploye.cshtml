@@ -1,0 +1,121 @@
+﻿@page
+@{
+    Object[] employes = (Object[]) ViewBag.Employes;
+}
+
+<div class="row grid-margin stretch-card"  id="primary">
+    <div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Liste des employes</h4>
+        <div class="mb-3 mt-5">
+            <ul class="nav">
+                <li>
+                    <a class="btn btn-primary" style="width: 150px;" data-toggle="collapse" href="#recherche-employe" aria-expanded="false" aria-controls="form-elements">
+                        <span class="menu-title">Recherche</span>
+                        <sub><i class="mdi mdi-chevron-down menu-icon"></i></sub>
+                    </a>
+                    <div class="collapse mt-2" id="recherche-employe">
+                        <form method="post" asp-controller="Employe" asp-action="Recherche" class="form-inline">
+                            <input type="text" name="motcle" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Mot cle...">
+                            
+                            <div class="input-group mb-2 mr-sm-2">
+                                <select name="etat" class="form-control" id="exampleSelectGender">
+                                    <option value="2">Tous</option>
+                                    <option value="1">Actif</option>
+                                    <option value="0">Non Actif</option>
+                                </select>
+                            </div>
+                            <div class="input-group mb-2 mr-sm-2">
+                                <select name="idservice" class="form-control" id="exampleSelectGender">
+                                    <option>Choix service</option>
+                                    <option value="0">Tous</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary mb-2"><i class="icon-search"></i></button>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Numero</th>
+                <th>Poste</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Statut</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (Employe employe in employes) {
+            <tr>
+                <td>@employe.Id</td>
+                <td>@employe.Poste</td>
+                <td>@employe.Nom</td>
+                <td>@employe.Prenom</td>
+                @if(employe.Etat == 1) {
+                    <td><label class="badge badge-success">Actif</label></td>
+                } else {
+                    <td><label class="badge badge-danger">Non Actif</label></td>
+                }
+                <td>
+                    <div class="col-md-2 dropdown">
+                        <button class="btn btn-link text-secondary mb-0">
+                            <i class="fas fa-ellipsis-v "></i>
+                        </button>
+                        <div class="dropdown-content border-radius-md shadow">
+                            <a asp-area="" asp-controller="Employe" asp-action="Detail">
+                                <i class="mdi mdi-information-outline"></i> 
+                            </a>
+                            <a href="#">
+                                <i class="mdi mdi mdi-pen"></i>
+                            </a>
+                            <a href="#" data-toggle="modal" data-target="#virer-employe" onclick="javascript:virer_employe(@employe.Id)">
+                                <i class="mdi mdi-close"></i>
+                            </a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            }
+            </tbody>
+        </table>
+        </div>
+    </div>
+    </div>
+</div>
+
+<!-- Suppression - Modal -->
+<div id="virer-employe" class="modal fade" role="dialog" aria-labelledby="virer-employe" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header b-0">
+                <h4 class="modal-title">Message confirmation</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <p>La suppression de certaines elements peuvent etre irreversible, voulez vous continuer ?</p>
+            </div>
+            <div class="modal-footer b-0">
+                <form method="post" asp-controller="Employe" asp-action="Virer">
+                    <input type="hidden" id="id-delete" name="idembauche">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times"></i>&nbsp;&nbsp;Annuler</button>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i>&nbsp;&nbsp;Confirmer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Modal -->
+
+<script>
+    function virer_employe(id) {
+        document.getElementById("id-delete").value = id;
+    }
+</script>

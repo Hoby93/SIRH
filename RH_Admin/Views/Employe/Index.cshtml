@@ -1,0 +1,133 @@
+@{
+  Embauche[] embauches = ViewBag.embauches;
+  Boolean isEmpty = true;
+
+}
+<div class="row">
+  <div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <p class="card-title">Liste des employes</p>
+        <div class="row">
+          <div class="col-12">
+            <div class="table-responsive">
+                <div class="mb-3 mt-5">
+                  <ul class="nav">
+                      <li>
+                          <a class="btn btn-primary" style="width: 150px;" data-toggle="collapse" href="#recherche-employe" aria-expanded="false" aria-controls="form-elements">
+                              <span class="menu-title">Recherche</span>
+                              <sub><i class="mdi mdi-chevron-down menu-icon"></i></sub>
+                          </a>
+                          <div class="collapse mt-2" id="recherche-employe">
+                              <form method="post" asp-controller="Employe" asp-action="Recherche" class="form-inline">
+                                  <input type="text" name="motcle" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Mot cle...">
+                                  
+                                  <div class="input-group mb-2 mr-sm-2">
+                                      <select name="etat" class="form-control" id="exampleSelectGender">
+                                          <option value="2">Tous</option>
+                                          <option value="1">Actif</option>
+                                          <option value="0">Non Actif</option>
+                                      </select>
+                                  </div>
+                                  <div class="input-group mb-2 mr-sm-2">
+                                      <select name="idservice" class="form-control" id="exampleSelectGender">
+                                          <option>Choix service</option>
+                                          <option value="0">Tous</option>
+                                      </select>
+                                  </div>
+                                  <button type="submit" class="btn btn-primary mb-2"><i class="icon-search"></i></button>
+                              </form>
+                          </div>
+                      </li>
+                  </ul>
+              </div>
+              <table
+                id="example"
+                class="display expandable-table"
+                style="width: 100%"
+              >
+                <thead>
+                  <tr>
+                    <th>N° matricule</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    @* <th>Date de naissance</th> *@
+                    @* <th>Date d' embauche</th> *@
+                    @* <th>Genre</th> *@
+                    <th>Direction</th>
+                    <th>Fonction</th>
+                    @* <th>Adresse</th> *@
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach (var item in embauches)
+                  {
+                    isEmpty = false;
+                    <tr>
+                      <td>@item.Numeromatricule</td>
+                      <td>@item.Nom</td>
+                      <td>@item.Prenom</td>
+                      @* <td>@item.DateNaissance.ToString("yyyy-MM-dd")</td> *@
+                      @* <td>@item.DateEmbauche.ToString("yyyy-MM-dd")</td> *@
+                      @* <td>@item.ShowGenre()</td> *@
+                      <td>@item.Poste.Service.Libelle</td>
+                      <td>@item.Poste.Libelle</td>
+                      @* <td>@item.Adresse</td> *@
+                      <td>
+                        <div class="col-md-2 dropdown">
+                          <a href='@Url.Action("Detail", "Employe", new{id = item.IdCandidat})'>
+                            <i class="mdi mdi-information-outline"></i> 
+                          </a>
+                        </div>
+                      </td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+
+              @if(isEmpty) {
+                <div class="text-center p-3 text-secondary">
+                    <em>Aucun element pour l'instant</em>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Suppression - Modal -->
+<div id="virer-employe" class="modal fade" role="dialog" aria-labelledby="virer-employe" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header b-0">
+                <h4 class="modal-title">Message confirmation</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <p>La suppression de certaines elements peuvent etre irreversible, voulez vous continuer ?</p>
+            </div>
+            <div class="modal-footer b-0">
+                <form method="post" asp-controller="Employe" asp-action="Virer">
+                    <input type="hidden" id="id-delete" name="idembauche">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times"></i>&nbsp;&nbsp;Annuler</button>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i>&nbsp;&nbsp;Confirmer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Modal -->
+
+<script>
+    function virer_employe(id) {
+        document.getElementById("id-delete").value = id;
+    }
+</script>
+<script src="~/js/listeEmployes.js"></script>
+

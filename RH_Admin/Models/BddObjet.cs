@@ -216,6 +216,50 @@ namespace SIRH.Models
             return this.select("", connection);
         }
 
+        public Object Init(String query_clauses, NpgsqlConnection connection)
+        {
+            bool shouldCloseConnection = false;
+
+            // Create a new connection if the provided connection is null
+            if (connection == null)
+            {
+                string connectionString = $"Server=localhost;Port=5432;Database={db};User Id={user};Password={pwd};";
+                connection = new NpgsqlConnection(connectionString);
+                connection.Open();
+                shouldCloseConnection = true;
+            }
+
+            List<String> attributsName = getFieldsOnDatabase(connection);
+
+            string query = "SELECT * FROM " + tableName() + " " + query_clauses;
+            using (var command = new NpgsqlCommand(query, connection))
+            {
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Object objectInstance = Activator.CreateInstance(this.GetType());
+                        foreach (String attributName in attributsName)
+                        {
+                            int colNum = reader.GetOrdinal(attributName);
+                            if(!reader.IsDBNull(colNum)) {
+                                this.setProprety(objectInstance, reader.GetValue(colNum), attributName);
+                            }
+                        }
+                        return objectInstance;
+                    }
+                }
+            }
+
+            // Close the connection if it was created within this method
+            if (shouldCloseConnection)
+            {
+                connection.Close();
+            }
+
+            return null;
+        }
+
         public void update(String condition, NpgsqlConnection connection)
         {
             bool shouldCloseConnection = false;
@@ -243,7 +287,7 @@ namespace SIRH.Models
                     Object value = getProprety(col);
                     if (value != null && !value.ToString().Equals("-1") && !value.ToString().Equals("01/01/0001 00:00:00")) {
                         string updateQuery = $"UPDATE {tableName()} SET {col} = {forQueryValue(value)} WHERE {scriptModifCondition(condition,key)}";
-                        //Console.WriteLine(updateQuery);
+                        Console.WriteLine(updateQuery);
                         command.CommandText = updateQuery;
 
                         rowsAffected += command.ExecuteNonQuery();
@@ -438,6 +482,26 @@ namespace SIRH.Models
             }
 
             return 0;
+        }
+
+        public static void ExecuteNonQuery(String sql, NpgsqlConnection connection)
+        {
+            string connectionString = "Server=localhost;Port=5432;Database=sirh;User Id=postgres;Password=ITUprom15";
+            connection = new NpgsqlConnection(connectionString);
+            connection.Open();
+            
+            using (NpgsqlCommand command = new NpgsqlCommand())
+            {
+                command.Connection = connection;
+                int rowsAffected = 0;
+
+                command.CommandText = sql;
+
+                rowsAffected += command.ExecuteNonQuery();
+                // Console.WriteLine(sql);
+            }
+
+            connection.Close();
         }
     }
 }

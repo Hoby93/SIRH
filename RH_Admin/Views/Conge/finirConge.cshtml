@@ -1,0 +1,101 @@
+@{
+    Boolean isEmpty = true;
+}
+
+<div class="row grid-margin stretch-card" id="primary">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Liste des conges en cours</h4>
+            @if (ViewBag.ErrorMessage != null)
+            {
+                <div class="alert alert-danger">
+                    @ViewBag.ErrorMessage
+                </div>
+            }
+            <div class="">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Identifiant</th>
+                            <th>Nom</th>
+                            <th>Prenom</th>
+                            <th>Poste</th>
+                            <th>Type conge</th>
+                            <th>Debut conge</th>
+                            <th>Fin conge</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (AffReelConge adc in ViewBag.reel)
+                        {
+                            isEmpty = false;
+                            <tr>
+                                <td>@adc.Candidat.Id</td>
+                                <td>@adc.Candidat.Nom</td>
+                                <td>@adc.Candidat.Prenom</td>
+                                <td>@adc.Poste.Libelle</td>
+                                <td>@adc.TypeConge.Nom</td>
+                                <td>@adc.ReelConge.Debutconge</td>
+                                <td>---</td>
+                                <td>
+                                    <div class="col-md-2 dropdown">
+                                        <button class="btn btn-link text-secondary mb-0">
+                                            <i class="fas fa-ellipsis-v "></i>
+                                        </button>
+                                        <div style="width:90px" class="dropdown-content border-radius-md shadow">
+                                            <a href="#" onclick="javascript:finirConge(@adc.ReelConge.Id)">
+                                                Finir
+                                            </a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                @if(isEmpty) {
+                <div class="text-center p-3 text-secondary">
+                    <em>Aucun element pour l'instant</em>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal " id="finir" style="margin-top: -10%;">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content card shadow-lg b-0">
+            <form method="post" asp-controller="Conge" asp-action="confirmerFinirConge">
+                <div class="modal-header b-0">
+                    <h4 class="modal-title">Modification Poste</h4>
+                    <button type="button" class="btn p-0" onclick="javascript:hidde('finir')">
+                        <i class="mdi mdi-close"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="idreelconge" name="idreelconge">
+                    Entrer une date fin
+                    <input type="date" class="form-control" name="datefin">
+                </div>
+                <div class="modal-footer b-0">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-check"></i>&nbsp;&nbsp;Confirmer
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function finirConge(idreelconge) {
+        document.getElementById("idreelconge").value = idreelconge;
+
+        display('finir');
+    }
+</script>
+
+<script src="~/js/modal.js"></script>

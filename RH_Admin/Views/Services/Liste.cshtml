@@ -1,0 +1,129 @@
+@model Services[]
+
+<style>
+    a{
+        font-size:22px;
+        color: #4B49AC;
+    }
+</style>
+
+<div class="row grid-margin stretch-card"  id="primary">
+    <div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Liste des services</h4>
+        
+        <div class="mb-3 mt-5">
+            <button class="btn btn-dark" onclick="javascript:display('ajout')">
+                <i class="ti-plus btn-icon-prepend"></i>
+                <span class="ml-1">Ajouter</span>
+            </button>
+        </div>
+        @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+        {
+            <div class="alert alert-danger">
+                @ViewBag.ErrorMessage
+            </div>
+        }
+        <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Libelle</th>
+				<th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach(var item in Model){
+            <tr>
+                <td>@item.libelle</td>
+                <td>
+                    
+                    <a href='@Url.Action("prepaModifierService","Services",new{idservice=@item.id})'>
+                        <i class="mdi mdi-pen"></i>
+                    </a>
+                    <a href="#" onclick="javascript:delete_service(@item.id)">
+                        <i class="mdi mdi-close"></i>
+                    </a>
+                      
+                </td>
+            </tr>
+            }
+            </tbody>
+        </table>
+        </div>
+    </div>
+    </div>
+</div>
+
+
+@* insert *@
+<div class="modal" id="ajout" style="margin-top: -8%; height: 120%;">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content card shadow-lg b-10">
+        
+            <!-- Modal Header -->
+            <div class="modal-header b-0">
+                <h4 class="modal-title">Ajout service</h4>
+                <button class="btn p-0" onclick="javascript:hidde('ajout')">
+                    <i class="mdi mdi-close"></i>
+                </button>
+            </div>
+            
+            <form method="post" asp-controller="Services" asp-action="ajoutService">
+            <!-- Modal Body -->
+            <div class="modal-body">       
+                <div class="form-group">
+                    <label for="">Libelle</label>
+                    <input type="text" class="form-control" name="libelle">
+                </div>
+            </div>
+            
+            <!-- Modal Footer -->
+            <div class="modal-footer b-0">
+                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i>&nbsp;&nbsp;Valider</button>
+            </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+@* delete *@
+<div class="modal " id="supression" style="margin-top: -10%;">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content card shadow-lg b-0">
+        
+            <!-- Modal Header -->
+            <div class="modal-header b-0">
+                <h4 class="modal-title">Message confirmation</h4>
+                <button class="btn" onclick="javascript:hidde('supression')">
+                    <i class="mdi mdi-close"></i>
+                </button>
+            </div>
+            
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <p>La suppression de certaines elements peuvent etre irreversible, voulez vous conctinuer ?</p>
+            </div>
+            
+            <!-- Modal Footer -->
+            <div class="modal-footer b-0">
+              <form asp-controller="Services" asp-action="supprimerService" method="GET">
+                <input type="hidden" id="id-delete" name="idservice">
+                <button type="button" class="btn btn-danger" onclick="javascript:hidde('supression')"><i class="fas fa-times"></i>&nbsp;&nbsp;Annuler</button>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i>&nbsp;&nbsp;Confirmer</button>
+              </form>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<script>
+    function delete_service(id) {
+        document.getElementById("id-delete").value = id;
+        display('supression');
+    }
+</script>
+
+<script src="~/js/modal.js"></script>

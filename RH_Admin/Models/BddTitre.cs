@@ -6,7 +6,8 @@ namespace SIRH.Models
         string libelle;
         string table;
 
-        public BddTitre() {
+        public BddTitre()
+        {
             this.init();
         }
         public BddTitre(string table)

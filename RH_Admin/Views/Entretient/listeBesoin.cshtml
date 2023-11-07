@@ -1,0 +1,29 @@
+<div class="card">
+    <div class="card-body">
+        <p class="card-title mb-0">Choisissez d'abord un besoin</p>
+        <div class="table-responsive">
+            <table class="table table-striped table-borderless">
+                <thead>
+                    <tr>
+                        <th>numero besoin</th>
+                        <th>libelle</th>
+                        <th>action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(Besoin besoin in ViewBag.all){
+                        <tr>
+                            <td>@besoin.Id</td>
+                            <td>@besoin.Libelle</td>
+                            <td class="font-weight-medium">
+                                <a class="btn btn-primary" href="@Url.Action("listeCandidat", "Entretient", new { idbesoin = @besoin.Id })">
+                                    Voir candidats
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

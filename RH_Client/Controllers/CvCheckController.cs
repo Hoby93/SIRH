@@ -8,12 +8,12 @@ namespace RH_Client.Controllers;
 public class CvCheckController : Controller
 {
 
-    public IActionResult voirResultat(string idbesoin,string idcandidat)
+    public IActionResult voirResultat(string idbesoin, string idcandidat)
     {
-        Besoin besoin = (Besoin) new Besoin().Select($"where id = {idbesoin}",null);
-        Candidat candidat = (Candidat) new Candidat().Select($"where id = {idcandidat}",null);
+        Besoin besoin = (Besoin)new Besoin().Select($"where id = {idbesoin}", null);
+        Candidate candidat = (Candidate)new Candidate().Select($"where id = {idcandidat}", null);
 
-        Boolean estValider = besoin.IsAdmis(candidat,null);
+        Boolean estValider = besoin.IsAdmis(candidat, null);
 
         ViewBag.flag = estValider;
         ViewBag.idposte = besoin.Idposte;

@@ -1,0 +1,24 @@
+@page
+@model Candidate // Remplacez Postulant par le nom de votre modèle de données pour un postulant
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Détails du CV du postulant</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Détails du CV du postulant</h1>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">@Model.Nom, @Model.Prenom</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Email : @Model.Email</h6>
+                <p class="card-text">Téléphone : @Model.Telephone</p>
+                <!-- Ajoutez ici d'autres détails du CV du postulant -->
+                <a href="#" class="btn btn-primary">Télécharger CV</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

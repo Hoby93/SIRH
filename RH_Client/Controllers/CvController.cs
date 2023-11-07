@@ -8,10 +8,24 @@ namespace RH_Client.Controllers;
 public class CvController : Controller
 {
 
-    public IActionResult formulaireAjoutCv(string idbesoin)
+    public IActionResult formulaireAjoutCv(string idbesoin,int idannonce)
     {
         Critere refs = new Critere();
         List<Critere> critere =  refs.getCritereByBesoin(null,int.Parse(idbesoin));
+
+        if(HttpContext.Session.GetInt32("userid") == null){
+            TempData["ErrorMessage"] = "Vous devez vous connecter";
+            return RedirectToAction("InfoAnnonce", "Home", new {idannonce = idannonce});
+        }
+        int idcandidat = (int) HttpContext.Session.GetInt32("userid");
+
+        // verifier si a deja postuler
+        Object[] bc = new BesoinCandidat().select($"WHERE idbesoin = {idbesoin} AND idcandidat = {idcandidat}",null);
+        if(bc.Length > 0)
+        {
+            TempData["ErrorMessage"] = "Vous avez deja postule";
+            return RedirectToAction("InfoAnnonce", "Home", new {idannonce = idannonce});
+        }
 
 
         // <id critere,critereoption rehetra amle critere>
@@ -25,6 +39,7 @@ public class CvController : Controller
         ViewBag.idbesoin = idbesoin;
         ViewBag.allCritere = critere;
         ViewBag.dicoCritereOption = dico;
+        ViewBag.idcandidat = idcandidat;
         
         return View("AjoutCv");
     }
@@ -35,9 +50,8 @@ public class CvController : Controller
         Critere refs = new Critere();
         List<Critere> critere =  refs.getCritereByBesoin(null,int.Parse(Request.Form["idbesoin"]));
 
-        // info candidat mbola mila alaina
         string idbesoin = Request.Form["idbesoin"]; 
-        int idcandidat = 1; //alaina anaty session
+        int idcandidat = int.Parse(Request.Form["idcandidat"]);
         Candidate c = this.GetCandidate(idbesoin,idcandidat);
 
         // list iray hoana critere iray
@@ -47,11 +61,8 @@ public class CvController : Controller
         for(int i=0;i<critere.Count();i++){
             list[i] = new List<int>();
 
-            // Console.WriteLine("id critere :"+critere[i].Id+", idcriteres options nosafidiana("+Request.Form["critereOption-"+critere[i].Id].Count+") :");
-
             foreach (var item in Request.Form["critereOption-"+critere[i].Id])
             {
-                // Console.WriteLine("----- :"+item);
                 list[i].Add(int.Parse(item));
                 idCritereOption.Add(int.Parse(item));
             }
